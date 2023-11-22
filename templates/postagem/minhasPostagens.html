@@ -36,40 +36,40 @@
           </div>
         </div>
 
-        <nav class="mt-4">
-          <ul class="pagination ms-2">
-            <li class="page-item {{ 'disabled' if paginaAtual == 1 else '' }}">
-              <a class="page-link" href="/minhasPostagens?pn=1&ps={{ tamanhoPagina }}">
-                <i class="bi bi-arrow-left"></i>
-              </a>
-            </li>
-    
-            <li class="page-item {{ 'disabled' if paginaAtual == 1 else '' }}">
-              <a class="page-link" href="/minhasPostagens?pn={{ paginaAtual - 1 }}&ps={{ tamanhoPagina }}">
-                <i class="bi bi-arrow-left-short"></i>
-              </a>
-            </li>
-    
-            {% for i in range(totalPaginas) %}
-              <li class="page-item {{ 'active' if i + 1 == paginaAtual else '' }}">
-                <a class="page-link" href="/minhasPostagens?pn={{ i + 1 }}&ps={{ tamanhoPagina }}">{{ i + 1 }} 
-                </a> 
-              </li>
-              {% endfor %}
-    
-              <li class="page-item {{ 'disabled' if paginaAtual == totalPaginas else '' }}">
-                <a class="page-link" href="/minhasPostagens?pn={{ paginaAtual + 1 }}&ps={{ tamanhoPagina }}">
-                  <i class="bi bi-arrow-right-short"></i>
+          <nav class="mt-4">
+            <ul class="pagination ms-2">
+              <li class="page-item {{ 'disabled' if paginaAtual == 1 else '' }}">
+                <a class="page-link" href="/minhasPostagens?pn=1&ps={{ tamanhoPagina }}">
+                  <i class="bi bi-arrow-left"></i>
                 </a>
               </li>
-    
-              <li class="page-item {{ 'disabled' if paginaAtual == totalPaginas else '' }}">
-                <a class="page-link" href="/minhasPostagens?pn={{ totalPaginas }}&ps={{ totalPaginas }}">
-                  <i class="bi bi-arrow-right"></i>
+      
+              <li class="page-item {{ 'disabled' if paginaAtual == 1 else '' }}">
+                <a class="page-link" href="/minhasPostagens?pn={{ paginaAtual - 1 }}&ps={{ tamanhoPagina }}">
+                  <i class="bi bi-arrow-left-short"></i>
                 </a>
               </li>
-          </ul>
-        </nav>
+      
+              {% for i in range(totalPaginas) %}
+                <li class="page-item {{ 'active' if i + 1 == paginaAtual else '' }}">
+                  <a class="page-link" href="/minhasPostagens?pn={{ i + 1 }}&ps={{ tamanhoPagina }}">{{ i + 1 }} 
+                  </a> 
+                </li>
+                {% endfor %}
+      
+                <li class="page-item {{ 'disabled' if paginaAtual == totalPaginas else '' }}">
+                  <a class="page-link" href="/minhasPostagens?pn={{ paginaAtual + 1 }}&ps={{ tamanhoPagina }}">
+                    <i class="bi bi-arrow-right-short"></i>
+                  </a>
+                </li>
+      
+                <li class="page-item {{ 'disabled' if paginaAtual == totalPaginas else '' }}">
+                  <a class="page-link" href="/minhasPostagens?pn={{ totalPaginas }}&ps={{ totalPaginas }}">
+                    <i class="bi bi-arrow-right"></i>
+                  </a>
+                </li>
+            </ul>
+          </nav>
 
       </fieldset>
  
@@ -108,40 +108,40 @@
             </div>
           </div>
 
-          <nav class="mt-4">
-            <ul class="pagination ms-2">
-              <li class="page-item {{ 'disabled' if paginaAtual == 1 else '' }}">
-                <a class="page-link" href="/minhasPostagens?pn=1&ps={{ tamanhoPagina }}">
-                  <i class="bi bi-arrow-left"></i>
-                </a>
-              </li>
-      
-              <li class="page-item {{ 'disabled' if paginaAtual == 1 else '' }}">
-                <a class="page-link" href="/minhasPostagens?pn={{ paginaAtual - 1 }}&ps={{ tamanhoPagina }}">
-                  <i class="bi bi-arrow-left-short"></i>
-                </a>
-              </li>
-      
-              {% for i in range(totalPaginas) %}
-                <li class="page-item {{ 'active' if i + 1 == paginaAtual else '' }}">
-                  <a class="page-link" href="/minhasPostagens?pn={{ i + 1 }}&ps={{ tamanhoPagina }}">{{ i + 1 }} 
-                  </a> 
-                </li>
-                {% endfor %}
-      
-                <li class="page-item {{ 'disabled' if paginaAtual == totalPaginas else '' }}">
-                  <a class="page-link" href="/minhasPostagens?pn={{ paginaAtual + 1 }}&ps={{ tamanhoPagina }}">
-                    <i class="bi bi-arrow-right-short"></i>
+            <nav class="mt-4">
+              <ul class="pagination ms-2">
+                <li class="page-item {{ 'disabled' if paginaAtual == 1 else '' }}">
+                  <a class="page-link" href="/minhasPostagens?pn=1&ps={{ tamanhoPagina }}">
+                    <i class="bi bi-arrow-left"></i>
                   </a>
                 </li>
-      
-                <li class="page-item {{ 'disabled' if paginaAtual == totalPaginas else '' }}">
-                  <a class="page-link" href="/minhasPostagens?pn={{ totalPaginas }}&ps={{ totalPaginas }}">
-                    <i class="bi bi-arrow-right"></i>
+        
+                <li class="page-item {{ 'disabled' if paginaAtual == 1 else '' }}">
+                  <a class="page-link" href="/minhasPostagens?pn={{ paginaAtual - 1 }}&ps={{ tamanhoPagina }}">
+                    <i class="bi bi-arrow-left-short"></i>
                   </a>
                 </li>
-            </ul>
-          </nav>
+        
+                {% for i in range(totalPaginas) %}
+                  <li class="page-item {{ 'active' if i + 1 == paginaAtual else '' }}">
+                    <a class="page-link" href="/minhasPostagens?pn={{ i + 1 }}&ps={{ tamanhoPagina }}">{{ i + 1 }} 
+                    </a> 
+                  </li>
+                  {% endfor %}
+        
+                  <li class="page-item {{ 'disabled' if paginaAtual == totalPaginas else '' }}">
+                    <a class="page-link" href="/minhasPostagens?pn={{ paginaAtual + 1 }}&ps={{ tamanhoPagina }}">
+                      <i class="bi bi-arrow-right-short"></i>
+                    </a>
+                  </li>
+        
+                  <li class="page-item {{ 'disabled' if paginaAtual == totalPaginas else '' }}">
+                    <a class="page-link" href="/minhasPostagens?pn={{ totalPaginas }}&ps={{ totalPaginas }}">
+                      <i class="bi bi-arrow-right"></i>
+                    </a>
+                  </li>
+              </ul>
+            </nav>
 
         </fieldset>
         {% endif %}
