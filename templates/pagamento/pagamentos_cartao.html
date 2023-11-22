@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+
+<div class="container">
+
+<div class="d-flex justify-content-between align-items-center">
+    <h1>Tabela de Pagamentos no Cartão</h1>
+</div>
+
+<table class="table table-striped mt-3 text-center">
+    <thead>
+        <tr class="fs-5">
+            <th>Nome do Titular</th>
+            <th>Número do Cartão</th>
+            <th>Data de expiração</th>
+            <th>CVV</th>
+            <th>Parcela</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for p in pagamentos %}
+            <tr class="fs-5 text-center">
+                <td>
+                    {{ p.nome_Titular }}
+                </td>
+                <td>
+                    {{ p.numero_Cartao }}
+                </td>
+                <td>
+                    {{ p.data_Expiracao }}
+                </td>
+                <td>
+                    {{ p.cvv }}
+                </td>
+                <td>
+                    {{ p.parcela }}
+                </td>
+            </tr>
+        {% endfor %} 
+        
+    </tbody>
+</table>
+<hr>
+
+</div>
+
+{% endblock %}

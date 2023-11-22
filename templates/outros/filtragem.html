@@ -1,0 +1,358 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+
+<div class="container">
+    <div class="container m-5">
+  <div class="form-group row align-items-center justify-content-between ml-auto"> <!-- Adicionei a classe ml-auto aqui -->
+    <div class="col-sm-9">
+      <div class="input-group">
+        <input type="text" class="form-control fs-5" placeholder="Pesquisa" aria-label="Pesquisa" aria-describedby="button-addon2">
+        <div class="input-group-append">
+          <button class="btn border" type="button" id="button-addon2">
+            <p class="mt-3"><i class="bi bi-search"></i></p>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3 d-flex align-items-center">
+      <p class="fs-5 mt-2 me-2 text-dark"><i class="bi bi-bookmark"></i></p>
+      <h3><a class="text-uppercase link-underline link-underline-opacity-0 ml-2" href="https://projetofuncionando.anaamisth.repl.co/receitasSalvas">Receitas Salvas</a></h3>
+    </div>
+  </div>
+</div>
+
+        <fieldset class="max-w-100 border p-5 m-5 mt-0">
+          <legend class="float-none w-auto p-2">
+            <h1 class="text-primary">Selecione suas preferências</h1>
+          </legend>
+          <div class="row">
+            <div class="col-md-11">
+              <p>
+              <h3>Refeição</h3>
+              </p>
+            </div>
+            <div class="mb-3 col-md-1">
+              <img style="height: 3rem" src="static/imagens/Group 9.png" alt="Filtro">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="mb-3 form-group">
+                <div class="form-check">
+                  <input type="checkbox" class="btn-check" id="cafe" autocomplete="off" name="refeicao">
+                  <label class="w-100 btn btn-light fs-5" for="cafe">Café da Manhã</label>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="mb-3 form-group">
+                <div class="form-check">
+                  <input type="checkbox" class="btn-check" id="almoco" autocomplete="off" name="refeicao">
+                  <label class="w-100 btn btn-light fs-5" for="almoco">Almoço</label>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="mb-3 form-group">
+                <div class="form-check">
+                  <input type="checkbox" class="btn-check" id="lanches" autocomplete="off" name="refeicao">
+                  <label class="w-100 btn btn-light fs-5" for="lanches">Lanches</label>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+          <div class="row">
+            <div class="col-md-4">
+              <div class="mb-3 form-group">
+                <div class="form-check">
+                  <input type="checkbox" class="btn-check" id="jantar" autocomplete="off" name="refeicao">
+                  <label class="w-100 btn btn-light fs-5" for="jantar">Jantar</label>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="mb-3 form-group">
+                <div class="form-check">
+                  <input type="checkbox" class="btn-check" id="sobremesa" autocomplete="off" name="refeicao">
+                  <label class="w-100 btn btn-light fs-5" for="sobremesa">Sobremesa</label>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="mb-3 form-group">
+                <div class="form-check">
+                  <input type="checkbox" class="btn-check" id="bebida" autocomplete="off" name="refeicao">
+                  <label class="w-100 btn btn-light fs-5" for="bebida">Bebida</label>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+          <div class="row">
+            <div>
+              <label class="mb-4">
+                <h3>Restrições Alimentares </h3>
+              </label>
+            </div>
+            <div class="col">
+              <div class="mb-3 form-group">
+                <div class="form-check">
+                  <input type="checkbox" class="btn-check" id="btn-check1" autocomplete="off" name="restricao">
+                  <label class="w-100 btn btn-light fs-5" for="btn-check1">Sem glúten</label>
+                </div>
+              </div>
+              <div class="mb-3 form-group">
+                <div class="form-check">
+                  <input type="checkbox" class="btn-check" id="btn-check2" autocomplete="off" name="restricao">
+                  <label class="w-100 btn btn-light fs-5" for="btn-check2">Vegetariano</label>
+                </div>
+              </div>
+              <div class="mb-3 form-group">
+                <div class="form-check">
+                  <input type="checkbox" class="btn-check" id="btn-check3" autocomplete="off" name="restricao">
+                  <label class="w-100 btn btn-light fs-5" for="btn-check3">Low Carb</label>
+                </div>
+              </div>
+              <div class="mb-3 form-group">
+                <div class="form-check">
+                  <input type="checkbox" class="btn-check" id="btn-check4" autocomplete="off" name="restricao">
+                  <label class="w-100 btn btn-light fs-5" for="btn-check4">Sem frutos do mar</label>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="mb-3 form-group">
+                <div class="form-check">
+                  <input type="checkbox" class="btn-check" id="btn-check5" autocomplete="off" name="restricao">
+                  <label class="w-100 btn btn-light fs-5" for="btn-check5">Sem lactose</label>
+                </div>
+              </div>
+              <div class="mb-3 form-group">
+                <div class="form-check">
+                  <input type="checkbox" class="btn-check" id="btn-check6" autocomplete="off" name="restricao">
+                  <label class="w-100 btn btn-light fs-5" for="btn-check6">Vegano</label>
+                </div>
+              </div>
+              <div class="mb-3 form-group">
+                <div class="form-check">
+                  <input type="checkbox" class="btn-check" id="btn-check7" autocomplete="off" name="restricao">
+                  <label class="w-100 btn btn-light fs-5" for="btn-check7">Integral</label>
+                </div>
+              </div>
+              <div class="mb-3 form-group">
+                <div class="form-check">
+                  <input type="checkbox" class="btn-check" id="btn-check8" autocomplete="off" name="restricao">
+                  <label class="w-100 btn btn-light fs-5" for="btn-check8">Sem leite</label>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="mb-3 form-group">
+                <div class="form-check">
+                  <input type="checkbox" class="btn-check" id="btn-check9" autocomplete="off" name="restricao">
+                  <label class="w-100 btn btn-light fs-5" for="btn-check9">Sem açúcar</label>
+                </div>
+              </div>
+              <div class="mb-3 form-group">
+                <div class="form-check">
+                  <input type="checkbox" class="btn-check" id="btn-check10" autocomplete="off" name="restricao">
+                  <label class="w-100 btn btn-light fs-5" for="btn-check10">Sem ovo</label>
+                </div>
+              </div>
+              <div class="mb-3 form-group">
+                <div class="form-check">
+                  <input type="checkbox" class="btn-check" id="btn-check11" autocomplete="off" name="restricao">
+                  <label class="w-100 btn btn-light fs-5" for="btn-check11">Sem leite</label>
+                </div>
+              </div>
+              <div class="mb-3 form-group">
+                <div class="form-check">
+                  <input type="checkbox" class="btn-check" id="btn-check12" autocomplete="off" name="restricao">
+                  <label class="w-100 btn btn-light fs-5" for="btn-check12">Orgânico</label>
+                </div>
+              </div>
+            </div>
+    
+            <div class="row">
+              <div>
+                <label class="mb-4">
+                  <h3>Ingredientes </h3>
+                </label>
+              </div>
+              <div class="col-md-4">
+                <div class="mb-3 form-group">
+                  <div class="form-check">
+                    <input type="checkbox" name="ingredientes" class="btn-check" id="ing1" autocomplete="off">
+                    <label class="w-100 btn btn-light fs-5" for="ing1">Frango</label>
+                  </div>
+                </div>
+                <div class="mb-3 form-group">
+                  <div class="form-check">
+                    <input type="checkbox" name="ingredientes" class="btn-check" id="ing2" autocomplete="off">
+                    <label class="w-100 btn btn-light fs-5" for="ing2">Carne vermelha</label>
+                  </div>
+                </div>
+                <div class="mb-3 form-group">
+                  <div class="form-check">
+                    <input type="checkbox" name="ingredientes" class="btn-check" id="ing3" autocomplete="off">
+                    <label class="w-100 btn btn-light fs-5" for="ing3">Pão</label>
+                  </div>
+                </div>
+                <div class="mb-3 form-group">
+                  <div class="form-check">
+                    <input type="checkbox" name="ingredientes" class="btn-check" id="ing4" autocomplete="off">
+                    <label class="w-100 btn btn-light fs-5" for="ing4">Ovo</label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="mb-3 form-group">
+                  <div class="form-check">
+                    <input type="checkbox" name="ingredientes" class="btn-check" id="ing5" autocomplete="off">
+                    <label class="w-100 btn btn-light fs-5" for="ing5">Frutos do Mar</label>
+                  </div>
+                </div>
+                <div class="mb-3 form-group">
+                  <div class="form-check">
+                    <input type="checkbox" name="ingredientes" class="btn-check" id="ing6" autocomplete="off">
+                    <label class="w-100 btn btn-light fs-5" for="ing6">Massas</label>
+                  </div>
+                </div>
+                <div class="mb-3 form-group">
+                  <div class="form-check">
+                    <input type="checkbox" name="ingredientes" class="btn-check" id="ing7" autocomplete="off">
+                    <label class="w-100 btn btn-light fs-5" for="ing7">Leguminosas</label>
+                  </div>
+                </div>
+                <div class="mb-3 form-group">
+                  <div class="form-check">
+                    <input type="checkbox" name="ingredientes" class="btn-check" id="ing8" autocomplete="off">
+                    <label class="w-100 btn btn-light fs-5" for="ing8">Cereais</label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="mb-3 form-group">
+                  <div class="form-check">
+                    <input type="checkbox" name="ingredientes" class="btn-check" id="ing9" autocomplete="off">
+                    <label class="w-100 btn btn-light fs-5" for="ing9">Porco</label>
+                  </div>
+                </div>
+                <div class="mb-3 form-group">
+                  <div class="form-check">
+                    <input type="checkbox" name="ingredientes" class="btn-check" id="ing10" autocomplete="off">
+                    <label class="w-100 btn btn-light fs-5" for="ing10">Vegetais</label>
+                  </div>
+                </div>
+                <div class="mb-3 form-group">
+                  <div class="form-check">
+                    <input type="checkbox" name="ingredientes" class="btn-check" id="ing11" autocomplete="off">
+                    <label class="w-100 btn btn-light fs-5" for="ing11">Frutas</label>
+                  </div>
+                </div>
+                <div class="mb-3 form-group">
+                  <div class="form-check">
+                    <input type="checkbox" name="ingredientes" class="btn-check" id="ing12" autocomplete="off">
+                    <label class="w-100 btn btn-light fs-5" for="ing12">Queijo</label>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col text-end">
+                  <button class="btn" type="button" id="button-addon5"><img alt="Check" class="img-fluid" style="height: 3rem"
+                      src="static/lib/bootstrap-icons/check-circle.svg" alt="Pesquisar restriçoes"></button>
+                </div>
+              </div>
+            </div>
+        </fieldset>
+      <fieldset class="max-w-100 border p-5 m-5 mt-0 rounded">
+          <legend  class="float-none w-auto p-2"><h1 class="text-primary">Receitas Populares</h1></legend>
+        <div class="container mt-5">
+          <div class="row row-cols-1 row-cols-md-3 g-4">
+            <!-- Card 1 -->
+            <div class="col">
+              <div class="card">
+                <img src="static/imagens/carne.jpg" style="height: 15rem;" class="card-img-top" alt="Receita 1">
+                <div class="card-body ">
+                  <div class="d-flex justify-content-between">
+                    <h5 class="card-title">Pato ao Molho</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+        
+            <!-- Card 2 -->
+            <div class="col">
+              <div class="card">
+                <img src="static/imagens/muffin.jpg" style="height: 15rem;" class="card-img-top" alt="Receita 2">
+                <div class="card-body ">
+                  <div class="d-flex justify-content-between">
+                    <h5 class="card-title">Muffin Cremoso</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+        
+            <!-- Card 3 -->
+            <div class="col">
+              <div class="card">
+                <img src="static/imagens/cheescake.jpg" style="height: 15rem;" class="card-img-top" alt="Receita 3">
+                <div class="card-body ">
+                  <div class="d-flex justify-content-between">
+                    <h5 class="card-title">Cheescake de Morango</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="col">
+              <div class="card">
+                <img src="static/imagens/poke.jpg" style="height: 15rem;" class="card-img-top" alt="Receita 4">
+                <div class="card-body ">
+                  <div class="d-flex justify-content-between">
+                    <h5 class="card-title">Poke de Grão de Bico</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+             <!-- Card 5 -->
+            <div class="col">
+              <div class="card">
+                <img src="static/imagens/caldo.jpg" style="height: 15rem;" class="card-img-top" alt="Receita 5">
+                <div class="card-body ">
+                  <div class="d-flex justify-content-between">
+                    <h5 class="card-title">Caldo de Abóbora</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+             <!-- Card 6 -->
+            <div class="col">
+              <div class="card">
+                <img src="static/imagens/avocado.jpg" class="card-img-top" style="height: 15rem;" alt="Receita 6">
+                <div class="card-body ">
+                  <div class="d-flex justify-content-between">
+                    <a href="receita.html" style="text-decoration: none; color: black;"><h5 class="card-title">Torradas com abacate</h5></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+          
+      </fieldset>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+<!-- botão transparente
+
+-->

@@ -1,0 +1,319 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+
+    <script>
+      let passoCounter = 1;
+
+      function adicionarPasso() {
+          passoCounter++;
+          
+          const novoPassoDiv = document.createElement('div');
+          novoPassoDiv.className = 'mb-3';
+          novoPassoDiv.innerHTML = `
+              <div class="mb-3">
+                <div class="d-flex justify-content-between"
+                  <label for="passo${passoCounter}">Passo ${passoCounter}</label>
+                  <label type="button" onclick="removerPasso(this)"><img src="static/lib/bootstrap-icons/trash.svg" style="height: 1rem" alt="Excluir"></label>
+                </div>
+                <div class="form-floating">
+                    <textarea class="form-control" id="passo${passoCounter}" name="passos[]" rows="2"></textarea>
+                </div> 
+              </div>
+          `;
+  
+          const passoForm = document.getElementById('passoForm');
+          passoForm.appendChild(novoPassoDiv);
+      }
+      
+      function removerPasso(botao) {
+          const divPasso = botao.closest('.mb-3');
+          passoCounter--;
+          divPasso.remove();
+      }
+
+      let ingredienteCounter = 1;
+
+      function adicionarIngrediente() {
+          ingredienteCounter++;
+          
+          const listaIngredientes = document.getElementById('listaIngredientes');
+  
+          const novoIngredienteLi = document.createElement('li');
+          novoIngredienteLi.innerHTML = `
+              <input type="number" class="bg-light mt-2" style="border-radius: 90rem; height: 2.25rem; width: 2.25rem; border: none; outline: none;">
+              <select class="border rounded bg-light" name="unidade">
+                  <option value="unidade">Unidade</option>
+                  <option value="colher (sopa)">Colher (sopa)</option>
+                  <option value="colher (sobremesa)">Colher (sobremesa)</option>
+                  <option value="colher (café)">Colher (café)</option>
+                  <option value="xícara">Xícara</option>
+                  <option value="copo">Copo</option>
+              </select>
+              <input type="text" class="border rounded" name="ingrediente" placeholder="Ingrediente">
+              <label type="button" onclick="removerIngrediente(this)"><img src="static/lib/bootstrap-icons/trash.svg" alt="Excluir" style="height: 1rem"></label>
+          `;
+  
+          listaIngredientes.appendChild(novoIngredienteLi);
+      }
+  
+      function removerIngrediente(botao) {
+          const liIngrediente = botao.closest('li');
+          liIngrediente.remove();
+      }
+
+    </script>
+    <form method="post">
+    <br>
+    <div class="container">
+      <div class="row">
+          <div>
+            <h1 class="text-secondary">Editar Receita: </h1>
+            <br>
+          </div>
+          <div class="row">
+            <div class="col-md-6 ">
+              <div class="card">     
+                <div class="card-body">
+                  <div class="input-group mb-3">
+                    <div class="card-image">
+                      <img class="ms-3" src="/static/imagens/avocado.jpg">
+                    </div>
+                  </div>
+                  
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">
+                    <div class="row align-items-center">
+                      <div class="col-md-4">
+                        <label for="selectIngPrincipal" class="col-form-label fs-4"> Título: </label>
+                      </div>
+                      <div class="col-md-8 justify-content-end">
+                        
+                          <div class="align-items-center">
+                            <p class="fs-4">Torradas integrais com pasta de abacate e ovos mexidos </p>
+                          </div>
+                      
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item">
+                    <div class="row align-items-center">
+                      <div class="col-md-4">
+                        <label for="selectIngPrincipal" class="col-form-label fs-4"> Ingrediente Principal: </label>
+                      </div>
+                      <div class="col-md-8 justify-content-end fs-4">
+                        <select class="form-select" aria-label="Default select example">
+                          <option selected> Selecione: </option>
+                          <option value="1" selected>Pão</option>
+                          <option value="2">Two</option>
+                          <option value="3">Three</option>
+                        </select>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item">
+                    <div class="row align-items-center">
+                      <div class="col-md-4">
+                        <label for="inputTempo" class="col-form-label fs-4"><img src="static/lib/bootstrap-icons/hourglass-split.svg" alt="Ampulheta" style="height: 1.8rem;"> Tempo de Preparo: </label>
+                      </div>
+                      <div class="col-md-8 d-flex justify-content-end">
+                      <p class="fs-4">45 min</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item">
+                    <div class="row align-items-center">
+                      <div class="col-md-4">
+                        <label for="inputRendimento" class="col-form-label fs-4"><img src="static/imagens/cloche.svg" alt="Cloche" style="height: 2rem;"> Rendimento: </label>
+                      </div>
+                      <div class="col-md-8 d-flex justify-content-end">
+                        <p class="fs-4">8 porções</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item">
+                    <div class="row align-items-center">
+                      <div class="col-md-4">
+                        <label for="selectTipoRefeicao" class="col-form-label fs-4"><img src="static/imagens/refeicao.svg" alt="Refeição" style="height: 2rem;"> Tipo de Refeição: </label>
+                      </div>
+                      <div class="col-md-8 justify-content-end">
+                        <select class="form-select fs-4" aria-label="Default select example">
+                          <option selected><img src="static/imagens/refeicao.svg" alt="Refeicao" style="height: 1.3rem;"> Selecione: </option>
+                          <option value="1" selected>Café da manhã</option>
+                          <option value="2">Almoço</option>
+                          <option value="3">Lanches</option>
+                          <option value="1">Jantar</option>
+                          <option value="2">Sobremesa</option>
+                          <option value="3">Bebidas</option>
+                        </select>
+                      </div>
+                    </div>
+                  </li> 
+                </ul>
+              </div>
+              <br>
+              <div>
+                <div class="border rounded mb-4">
+                  <div>
+                    <div class="m-2 d-flex justify-content-between">
+                      <h5 class="text-secondary fs-2">Ingredientes:</h5>
+                    <div>
+                        <label type="button" class="mt-1" onclick="adicionarIngrediente()"><img src="static/lib/bootstrap-icons/plus-circle.svg" alt="Adicionar" style="height: 1.5rem;"></label>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                      <form id="ingredientesForm">
+                        <ul style="list-style: none" id ="listaIngredientes">
+                            <li>
+                                <input type="number" class="bg-light" style="border-radius: 90rem; height: 2.25rem; width: 2.25rem; border: none; outline: none;">
+                                <select class="border rounded bg-light" name="unidade">
+                                    <option value="unidade">Unidade</option>
+                                    <option value="colher (sopa)">Colher (sopa)</option>
+                                    <option value="colher (sobremesa)">Colher (sobremesa)</option>
+                                    <option value="colher (café)">Colher (café)</option>
+                                    <option value="xícara">Xícara</option>
+                                    <option value="copo">Copo</option>
+                                </select>
+                                <input type="text" class="border rounded w-md-100" name="ingrediente" placeholder="Ingrediente">
+                            </li>
+                        </ul>
+                    </form>
+                    
+                </div>
+              </div>
+
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="container">  
+                <div class="row">
+                  <div class="border rounded">
+                    <div class="mt-2 d-flex justify-content-between">
+                      <h5 class="text-secondary fs-2">Modo de Preparo:</h5>
+                      <div>
+                        <label type="button" class="mt-1" onclick="adicionarPasso()"><img src="static/lib/bootstrap-icons/plus-circle.svg" alt="Adicionar" style="height: 1.5rem;"></label>
+                      </div>
+                    </div>
+                    <form id="passoForm">
+                        <div class="mb-3">
+                            <label for="passo1 fs-4">Passo 1</label>
+                            <div class="form-floating">
+                                <textarea class="form-control" id="passo1" name="passos[]" rows="2"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                  </div>  
+                </div> 
+              </div>
+              <br>
+              <br>
+                <div class="border rounded p-3">
+                  <label for="exampleFormControlTextarea1" class="card-title mt-2 align-middle"><h5 class="text-secondary fs-2">Descrição</h5></label>
+                  <textarea class="form-control bg-info" style="padding-right: 2rem;" name="descricao"  required></textarea>
+                </div>
+              <br>
+              <br>
+              <div class="border rounded p-3">
+                <div class="row">
+                <div>
+                    <label class="mb-4"><h4 class="text-secondary ms-2 fs-2">Preferências Alimentares</h4></label>
+                </div>
+                <div class="col">
+                    <div class="mb-3 form-group">
+                      <div class="form-check">
+                        <input type="checkbox" class="btn-check" id="btn-check1" autocomplete="off" style="max-width: 100px;">
+                        <label class="w-100 btn btn-light fs-5" for="btn-check1">Sem glúten</label>
+                      </div>
+                    </div>
+                    <div class="mb-3 form-group">
+                        <div class="form-check">
+                          <input type="checkbox" class="btn-check" id="btn-check2"  autocomplete="off" checked>
+                          <label class="w-100 btn btn-light fs-5" for="btn-check2">Vegetariano</label>
+                        </div>
+                    </div>
+                    <div class="mb-3 form-group">
+                        <div class="form-check">
+                          <input type="checkbox" class="btn-check" id="btn-check3"  autocomplete="off">
+                          <label class="w-100 btn btn-light fs-5" for="btn-check3">Low Carb</label>
+                        </div>
+                    </div>
+                    <div class="mb-3 form-group">
+                        <div class="form-check">
+                          <input type="checkbox" class="btn-check" id="btn-check4"  autocomplete="off">
+                          <label class="w-100 btn btn-light fs-5" for="btn-check4">S/ frutos mar</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3 form-group">
+                        <div class="form-check">
+                          <input type="checkbox" class="btn-check" id="btn-check5"  autocomplete="off">
+                          <label class="w-100 btn btn-light fs-5" for="btn-check5">Sem lactose</label>
+                        </div>
+                    </div>
+                    <div class="mb-3 form-group">
+                        <div class="form-check">
+                         <input type="checkbox" class="btn-check" id="btn-check6"  autocomplete="off">
+                          <label class="w-100 btn btn-light fs-5" for="btn-check6">Vegano</label>
+                        </div>
+                    </div>
+                    <div class="mb-3 form-group">
+                        <div class="form-check">
+                          <input type="checkbox" class="btn-check" id="btn-check7"  autocomplete="off" checked>
+                          <label class="w-100 btn btn-light fs-5" for="btn-check7">Integral</label>
+                        </div>
+                    </div>
+                    <div class="mb-3 form-group">
+                        <div class="form-check">
+                          <input type="checkbox" class="btn-check" id="btn-check8"  autocomplete="off">
+                          <label class="w-100 btn btn-light fs-5" for="btn-check8">Sem leite</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3 form-group">
+                        <div class="form-check">
+                          <input type="checkbox" class="btn-check" id="btn-check9"  autocomplete="off">
+                          <label class="w-100 btn btn-light fs-5" for="btn-check9">Sem açúcar</label>
+                        </div>
+                    </div>
+                    <div class="mb-3 form-group">
+                        <div class="form-check">
+                         <input type="checkbox" class="btn-check" id="btn-check10"  autocomplete="off">
+                          <label class="w-100 btn btn-light fs-5" for="btn-check10">Sem ovo</label>
+                        </div>
+                    </div>
+                    <div class="mb-3 form-group">
+                        <div class="form-check">
+                          <input type="checkbox" class="btn-check" id="btn-check11"  autocomplete="off">
+                          <label class="w-100 btn btn-light fs-5" for="btn-check11">Sem leite</label>
+                        </div>
+                    </div>
+                    <div class="mb-3 form-group">
+                        <div class="form-check">
+                          <input type="checkbox" class="btn-check" id="btn-check12"  autocomplete="off" checked>
+                          <label class="w-100 btn btn-light fs-5" for="btn-check12">Orgânico</label>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            <m></m></div>
+            </div>
+
+
+  <br><br>
+  <div class="row mt-5">
+    <div class="d-flex justify-content-end">
+        <button id="btnSalvar" class="btn btn-primary mb-2 text-white fs-4" style="width: 100px;" type="submit">Salvar</button>
+        <button class="btn btn-primary mb-2 mx-2 text-white fs-4" style="width: 100px;" type="reset">Cancelar</button>
+    </div>
+  </div>
+          </div>
+      </div>
+</div>
+</form>
+
+    
+{% endblock %}

@@ -1,0 +1,190 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+
+<form>
+    <div class="container">
+        <div class="row">
+            <div class="form-group mb-3">
+                <h1> Configurações de usuário </h1>
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group fs-4">
+                <label for="exampleFormControlInput1">Nome*</label>
+                <input type="text" name="nome" class="form-control mb-4" id="exampleFormControlInput1"  value="{{ usuario.nome }}">
+                </div>
+                {% if not usuario.admin %}
+                <div class="form-group fs-4">
+                    <label for="exampleFormControlInput3">Endereço*</label>
+                    <input type="text" name="endereco" class="form-control mb-4" id="exampleFormControlInput3" value="{{ usuario.endereco }}">
+                </div>
+                <div class="text-primary fs-6">
+                    <a href="/novoPagamento" class="btn btn btn-primary text-white text-center fs-5 border border-1 text-start">Quero me tornar um usuário PRO</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div>
+                    <label for="exampleFormControlInput4" class="fs-4">Data de nascimento*</label>
+                </div>
+                <div>
+                    <input name="dataNascimento" type="date" class="form-control mb-4" id="exampleFormControlInput4" value="{{ usuario.dataNascimento }}">
+                </div>
+                <div>
+                    <label class="fs-4">Sexo*</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="sexo" id="exampleRadios1" value="Feminino" checked value="{{ usuario.sexo }}" {% if usuario.sexo == 'Feminino' %}checked{% endif %}>
+                    <label class="form-check-label fs-5" for="exampleRadios1">
+                    Feminino
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="sexo" id="exampleRadios2" value="Masculino" value="{{ usuario.sexo }}" {% if usuario.sexo == 'Masculino' %}checked{% endif %}>
+                    <label class="form-check-label fs-5" for="exampleRadios2">
+                    Masculino
+                    </label>
+                </div>
+                
+                
+            </div>
+            
+            <div class="col-md-4 ">
+                <div class="form-group fs-4">
+                        <label for="exampleFormControlFile1">Foto</label>
+                </div>
+                <div class="mb-3">
+                  <input class="form-control" type="file" id="arquivoImagem" name="arquivoImagem" onchange="previewImage(event)" accept="image/jpeg" required>
+                  <span class="text-danger d-none"></span>
+                </div>
+                <div class="pt-4 pb-4 text-center">
+                  <img src="/static/imagens/usuarios/{{ usuario.id|id_img }}.jpg" class="card-img-top" alt="Imagem do usuário {{ usuario.nome }}">    
+                </div>
+            </div>
+
+
+
+        </div>
+      {% endif %}
+        <hr class="mt-4 mb-4">
+        {% if not usuario.admin %}
+        <div class="row">
+          <div>
+            <label class="mb-4"><h1 class="text-secondary">Preferências Alimentares</h1></label>
+        </div>
+        <div class="col">
+            <div class="mb-3 form-group">
+              <div class="form-check">
+                <input type="checkbox" class="btn-check" id="semgluten" style="max-width: 100px;" name="semgluten" value="{{ usuario.semgluten }}" {% if usuario.semgluten %}checked{% endif %}>
+                <label class="w-100 btn btn-light fs-5" for="semgluten">Sem glúten</label>
+              </div>
+            </div>
+            <div class="mb-3 form-group">
+                <div class="form-check">
+                  <input type="checkbox" class="btn-check" id="vegetariano" name="vegetariano" value="{{ usuario.vegetariano }}" {% if usuario.lowcarb %}checked{% endif %}>
+                  <label class="w-100 btn btn-light fs-5" for="vegetariano">Vegetariano</label>
+                </div>
+            </div>
+            <div class="mb-3 form-group">
+                <div class="form-check">
+                  <input type="checkbox" class="btn-check" id="lowcarb" name="lowcarb" value="{{ usuario.lowcarb }}" {% if usuario.lowcarb %}checked{% endif %}>
+                  <label class="w-100 btn btn-light fs-5" for="lowcarb">Low Carb</label>
+                </div>
+            </div>
+            <div class="mb-3 form-group">
+                <div class="form-check">
+                  <input type="checkbox" class="btn-check" id="semfrutosdomar" name="semfrutosdomar" value="{{ usuario.semfrutosdomar }}" {% if usuario.semfrutosdomar %}checked{% endif %}>
+                  <label class="w-100 btn btn-light fs-5" for="semfrutosdomar">Sem frutos do mar</label>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="mb-3 form-group">
+                <div class="form-check">
+                  <input type="checkbox" class="btn-check" id="semlactose" name="semlactose" value="{{ usuario.semlactose}}"  {% if usuario.semlactose %}checked{% endif %}> 
+                  <label class="w-100 btn btn-light fs-5" for="semlactose">Sem lactose</label>
+                </div>
+            </div>
+            <div class="mb-3 form-group">
+                <div class="form-check">
+                 <input type="checkbox" class="btn-check" id="vegano" name="vegano"  value="{{ usuario.vegano }}"  {% if usuario.vegano %}checked{% endif %}>
+                  <label class="w-100 btn btn-light fs-5" for="vegano">Vegano</label>
+                </div>
+            </div>
+            <div class="mb-3 form-group">
+                <div class="form-check">
+                  <input type="checkbox" class="btn-check" id="integral" name="integral"   value="{{ usuario.integral }}"  {% if usuario.integral %}checked{% endif %}>
+                  <label class="w-100 btn btn-light fs-5" for="integral">Integral</label>
+                </div>
+            </div>
+            <div class="mb-3 form-group">
+                <div class="form-check">
+                  <input type="checkbox" class="btn-check" id="semleite" name="semleite"   value="{{ usuario.semleite }}"  {% if usuario.semleite %}checked{% endif %}>
+                  <label class="w-100 btn btn-light fs-5" for="semleite">Sem leite</label>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="mb-3 form-group">
+                <div class="form-check">
+                  <input type="checkbox" class="btn-check" id="semacucar" name="semacucar"  value="{{ usuario.semacucar }}"  {% if usuario.semacucar %}checked{% endif %}> 
+                  <label class="w-100 btn btn-light fs-5" for="semacucar">Sem açúcar</label>
+                </div>
+            </div>
+            <div class="mb-3 form-group">
+                <div class="form-check">
+                 <input type="checkbox" class="btn-check" id="semovo" name="semovo"  value="{{ usuario.semovo }}"  {% if usuario.semovo %}checked{% endif %}>
+                  <label class="w-100 btn btn-light fs-5" for="semovo">Sem ovo</label>
+                </div>
+            </div>
+            <div class="mb-3 form-group">
+                <div class="form-check">
+                  <input type="checkbox" class="btn-check" id="semleites" name="semleites" value="{{ usuario.semleites }}"  {% if usuario.semcacau %}checked{% endif %}>
+                  <label class="w-100 btn btn-light fs-5" for="semleites">Sem cacau</label>
+                </div>
+            </div>
+                <div class="mb-3 form-group">
+                  <div class="form-check">
+                    <input type="checkbox" class="btn-check" id="organico" name="organico"  value="{{ usuario.organico }}"  {% if usuario.organico %}checked{% endif %}>
+                    <label class="w-100 btn btn-light fs-5" for="organico">Orgânico</label>
+                  </div>
+                </div>
+            </div>
+            <hr class="mt-4 mb-4">
+          
+            {% endif %}
+            <div class="row align-items-center">
+              <div class="col-md-1 align-items-center">
+                <p style="font-size: 3rem;"><i class="bi bi-person-circle text-primary" alt="ícone perfil"></i></p>
+              </div>
+              <div class="col-md-9 align-items-center">
+                <input name="email" type="email" id="form2Example18" class="form-control form-control-lg login-input w-50" placeholder="E-mail"  value="{{ usuario.email }}"/>
+              </div>
+            </div>
+            <div class="row mt-3 align-items-center">
+              <div class="col-md-1">
+                <p style="font-size: 3rem;"><i class="bi bi-lock-fill text-primary" alt="Cadeado/Senha"></i></p>
+              </div>
+              <div class="col-md-9 justify-content-start">
+                <a href="/alterarSenha" class="btn btn btn-primary text-white text-center w-25 fs-5 border border-1 text-start">Alterar senha</a>
+
+
+                <!-- <input name="senha" type="password" id="form2Example18" class="form-control form-control-lg login-input w-50 " placeholder="Senha" value="{{ usuario.senha }}"/> -->
+              </div>
+            </div>
+            <hr class="mt-4 mb-4">
+            <div class="row">
+              <div class="col-lg-12" style="text-align: right;">
+                <div class="d-flex justify-content-end">
+                  <button id="btnSalvar" class="fs-4 btn btn-primary text-white mb-2" type="submit" style="width: 100px;">Alterar</button>
+                  <button class="fs-4 btn btn-primary text-white mb-2 mx-2" type="reset" style="width: 100px;">Cancelar</button>
+                </div>
+              </div>
+          </div>
+        </div>
+    </div>
+  </form>
+
+{% endblock %}

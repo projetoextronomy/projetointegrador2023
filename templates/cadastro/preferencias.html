@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+
+<div class="container">
+
+<div class="d-flex justify-content-between align-items-center">
+    <h1>Tabela de Preferências Alimentares</h1>
+</div>
+
+<table class="table table-striped mt-3 text-center">
+    <thead>
+        <tr class="fs-5">
+            <th>Sem glúten</th>
+            <th>Vegetariano</th>
+            <th>Low Carb</th>
+            <th>Sem frutos do mar</th>
+            <th>Sem lactose</th>
+            <th>Vegano</th>
+            <th>Integral</th>
+            <th>Sem leite</th>
+            <th>Sem açúcar</th>
+            <th>Sem ovo</th>
+            <th>Sem cacau</th>
+            <th>Orgânico</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        {% for u in usuarios %}
+            <tr class="fs-5 text-center">
+                <td>
+                    {{ "Sim" if u.semgluten == True else "Não" }}
+                </td>
+                <td>
+                    {{ "Sim" if u.vegetariano == True else "Não" }}
+                </td>
+                <td>
+                    {{ "Sim" if u.lowcarb == True else "Não" }}
+                </td>
+                <td>
+                    {{ "Sim" if u.semfrutosdomar == True else "Não" }}
+                </td>
+                <td>
+                    {{ "Sim" if u.semlactose == True else "Não" }}
+                </td>
+                <td>
+                    {{ "Sim" if u.vegano == True else "Não" }}
+                </td>
+                <td>
+                    {{ "Sim" if u.integral == True else "Não" }}
+                </td>
+                <td>
+                    {{ "Sim" if u.semleite == True else "Não" }}
+                </td>
+                <td>
+                    {{ "Sim" if u.semacucar == True else "Não" }}
+                </td>
+                <td>
+                    {{ "Sim" if u.semovo == True else "Não" }}
+                </td>
+                <td>
+                    {{ "Sim" if u.semcacau == True else "Não" }}
+                </td>
+                <td>
+                    {{ "Sim" if u.organico == True else "Não" }}
+                </td>
+            </tr>
+        {% endfor %} 
+        
+    </tbody>
+</table>
+<hr>
+
+</div>
+
+{% endblock %}

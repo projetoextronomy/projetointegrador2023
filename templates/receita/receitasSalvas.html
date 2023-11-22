@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+
+<div class="container">
+
+<fieldset class="max-w-100 border p-5 m-5 mt-0 rounded">
+    <legend  class="float-none w-auto p-2"><h1 class="text-primary">Receitas Salvas</h1></legend>
+    
+  <div class="container mt-5">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <!-- Card 1 -->
+      <div class="col">
+        <div class="card">
+          <img src="static/imagens/carne.jpg" style="height: 15rem;" class="card-img-top" alt="Receita 1">
+          <div class="card-body ">
+            <div class="d-flex justify-content-between">
+              <h5 class="card-title">Pato ao Molho</h5> <a href="#" class="btn btn-dark btn-sm rounded-5">
+                <i class="bi bi-trash"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Card 2 -->
+      <div class="col">
+        <div class="card">
+          <img src="static/imagens/muffin.jpg" style="height: 15rem;" class="card-img-top" alt="Receita 2">
+          <div class="card-body ">
+            <div class="d-flex justify-content-between">
+              <h5 class="card-title">Muffin Cremoso</h5> <a href="#" class="btn btn-dark btn-sm rounded-5">
+                <i class="bi bi-trash"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Card 3 -->
+      <div class="col">
+        <div class="card">
+          <img src="static/imagens/cheescake.jpg" style="height: 15rem;" class="card-img-top" alt="Receita 3">
+          <div class="card-body ">
+            <div class="d-flex justify-content-between">
+              <h5 class="card-title">Cheescake de Morango</h5> <a href="#" class="btn btn-dark btn-sm rounded-5">
+                <i class="bi bi-trash"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Card 4 -->
+      <div class="col">
+        <div class="card">
+          <img src="static/imagens/poke.jpg" style="height: 15rem;" class="card-img-top" alt="Receita 4">
+          <div class="card-body ">
+            <div class="d-flex justify-content-between">
+              <h5 class="card-title">Poke de Grão de Bico</h5> <a href="#" class="btn btn-dark btn-sm rounded-5">
+                <i class="bi bi-trash"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+             <!-- Card 5 -->
+            <div class="col">
+              <div class="card">
+                <img src="static/imagens/caldo.jpg" style="height: 15rem;" class="card-img-top" alt="Receita 5">
+                <div class="card-body ">
+                  <div class="d-flex justify-content-between">
+                    <h5 class="card-title">Caldo de Abóbora</h5> <a href="#" class="btn btn-dark btn-sm rounded-5">
+                      <i class="bi bi-trash"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+             <!-- Card 6 -->
+            <div class="col">
+              <div class="card">
+                <img src="static/imagens/avocado.jpg" class="card-img-top" style="height: 15rem;" alt="Receita 6">
+                <div class="card-body ">
+                  <div class="d-flex justify-content-between">
+                    <a href="receita.html" style="text-decoration: none; color: black;"><h5 class="card-title">Torradas com abacate</h5></a> <a href="#" class="btn btn-dark btn-sm rounded-5">
+                      <i class="bi bi-trash"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+          
+      </fieldset>
+</div>
+
+{% endblock %}

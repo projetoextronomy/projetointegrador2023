@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap" rel="stylesheet">
+    <!-- <link href="/static/lib/bootstrap/css/bootstrap.lux.min.css" rel="stylesheet"> -->
+    <link href="/static/lib/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- <link href="/static/css/estilos.css" rel="stylesheet"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/custombs.css">
+    <title>Extronomy</title>
+  </head>
+
+<body>
+    <header>
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg p-4">
+                <div class="container-fluid justify-content-between row">
+                    <a class="navbar-brand col-12 col-sm-5 col-md-4 col-lg-3 col-xl-2" href="/">
+                        <img src="/static/imagens/logo_oficial.png" alt="Logo" width="100%">
+                    </a>
+                    <button class="navbar-toggler col-12 col-sm-2" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarMenu">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse col-12 col-sm-7 col-md-8 col-lg-9 col-xl-10"
+                        id="navbarMenu">
+                        {% if usuario %}
+                        <div class="navbar-nav justify-content-between col-lg-9 ms-4">
+                            <a class="nav-link fs-4" id="feed-link" href="/feed">Feed</a>
+                        {% if not usuario.admin %}
+                            <a class="nav-link fs-4" id="filtragem-link" href="/filtragem">Filtragem</a>
+                            <a class="nav-link fs-4" id="chat-link" href="/chat">Chat</a>
+                            <a class="nav-link fs-4" id="sobre-link" href="/sobre">Sobre</a>
+                            <a class="nav-link fs-4" id="ajuda-link" href="/ajuda">Ajuda</a>
+                        {% endif %}
+                        </div>
+                        {% endif %}
+
+                        {% if usuario %}
+                        <div class="navbar-nav ms-auto">
+                          <label type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" class="text-center">
+                            {% if not usuario.admin %}
+                            <img src="/static/imagens/usuarios/{{ usuario.id|id_img }}.jpg" class="card-img-top w-50" alt="Imagem do usuário {{ usuario.nome }}" style="border-radius: 50%;">
+                            {% endif %}
+                            {% if usuario.admin %}
+                            <img src="/static/imagens/perfil_verde.svg" class="card-img-top w-25" alt="Imagem do usuário {{ usuario.nome }}" style="border-radius: 50%;">
+                            {% endif %}
+                          </label>
+                      </div>
+                      {% endif %}
+                      
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+     <div class="offcanvas offcanvas-end border rounded " tabindex="-1" style="width: 13rem; height:22rem;" id="offcanvasExample"
+        aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Menu</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="list-unstyled">
+                <li>
+                {% if usuario and (not usuario.admin) %}
+                        <div class="card-body mb-3">
+                          <a href=/configuracoes class="text-decoration-none text-black">
+                            <img src="/static/imagens/configuracao.svg" id="configuracao-link" class="me-2" style="height: 1.3rem;">Configurações
+                          </a>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <div class="card-body mb-3">
+                     <a href=/minhasReceitas id="minhasReceitas-link" class="text-decoration-none text-black">
+                      <img src="/static/imagens/fue.svg" class="me-2" style="height: 1.3rem;">Minhas Receitas
+                    </a>
+
+                    </div>
+                  </a>
+                </li>
+                <li>
+                    <div class="card-body mb-3">
+                    <a href=/receitasSalvas class="text-decoration-none text-black text-bold">
+                      <img src="/static/imagens/salvar.svg" class="me-2" id="receitasSalvas-link" style="height: 1.3rem;">Receitas Salvas
+                      </a>
+
+                    </div>
+                  </a>
+                </li>
+
+                <li>
+                    <div class="card-body mb-3">
+                    <a href=/minhasPostagens id="postagens-link" class="text-decoration-none text-black">
+                      <img src="/static/imagens/postagem.svg" class="me-2" style="height: 1.3rem;">Postagens
+                    </a>
+
+                    </div>
+                  </a>
+                </li>
+                {% endif %}
+                {% if usuario %}
+                
+                <li>
+                    <div class="card-body mb-3">
+                      <a href=/cupons id="cupons-link" class="text-decoration-none text-black">
+                        <img src="/static/imagens/cupom.svg" class="me-2" style="height: 1.3rem;">Cupons
+                    </a>
+                    </div>
+                  </a>
+                </li>
+                {% endif %}
+                {% if usuario and usuario.admin %}                         
+                <li>
+                    <div class="card-body mb-3">
+                      <a href=/usuarios id="usuarios-link" class="text-decoration-none text-black">
+                        <img src="/static/imagens/perfil_cinza.svg" class="me-2" style="height: 1.3rem;">Usuários
+                    </a>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                      <div class="card-body mb-3">
+                      <a href=/pagamentos class="text-decoration-none text-black text-bold">
+                        <img src="/static/imagens/salvar.svg" class="me-2" id="pagamentos-link" style="height: 1.3rem;">Pagamentos
+                        </a>
+  
+                      </div>
+                    </a>
+                  </li>
+
+                  <li>
+                    <div class="card-body mb-3">
+                    <a href=/minhasPostagens id="postagens-link" class="text-decoration-none text-black">
+                      <img src="/static/imagens/postagem.svg" class="me-2" style="height: 1.3rem;">Postagens
+                    </a>
+
+                    </div>
+                  </a>
+                </li>
+                {% endif %}
+                {% if usuario %}
+                <li>
+                    <div class="card-body mb-3">
+                      <a href="/logout" class="text-decoration-none text-black">
+                      <img src="/static/imagens/sair.svg" class="me-2" style="height: 1.3rem;">Sair
+                      </a>
+
+                    </div>
+                  </a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+      </div>
+    </div>
+  
+    <hr>
+    
+    <div class="container">
+      <main class="mt-5">
+        <div class="row mb-5">
+          <script>
+        // Verifica se a página anterior não é "/login"
+            if (document.referrer !== window.location.origin + "/login") {
+              document.write('<a href="javascript:history.back()"><img src="/static/imagens/voltar.svg" alt="Seta de voltar" style="width: 30px; height: 30px;"></a>');
+            }
+          </script>
+        </div>
+      </div>
+
+        {% block conteudo %}
+        {% endblock %}
+
+      <div class="pt-5 mt-5 mb-5 pb-5"></div>
+      
+    
+      <footer class="position-fixed bottom-0 mt-3 pb-4 pt-4 w-100 bg-light z-1" style="letter-spacing: 0.2rem;">
+        <div class="text-center w-100 bg-light">
+            <p class="fs-5 text-center mt-2 mb-0">© 2023 Copyright - SCLAM: Desenvolvimento de Softwares</p>
+        </div>        
+    </footer>    
+
+
+    </main> 
+</div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var currentURL = window.location.pathname;
+            $('nav a').removeClass('active');
+    
+            var activeLink = $('nav a[href="' + currentURL + '"]');
+          
+            activeLink.addClass('active');
+    
+            var currentURL = window.location.pathname;
+          
+            activeLink.css({
+                'background-color': 'rgba(172, 236, 228, 0.5)',
+                'border-radius': '10px', // Borda arredondada
+                'padding': '5px 10px'
+            });
+        });
+    </script>
+
+      
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+                    // Example starter JavaScript for disabling form submissions if there are invalid fields
+                    (() => {
+                        'use strict'
+
+                        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                        const forms = document.querySelectorAll('.needs-validation')
+
+                        // Loop over them and prevent submission
+                        Array.from(forms).forEach(form => {
+                            form.addEventListener('submit', event => {
+                                if (!form.checkValidity()) {
+                                    event.preventDefault()
+                                    event.stopPropagation()
+                                }
+
+                                form.classList.add('was-validated')
+                            }, false)
+                        })
+                    })()
+    </script>
+    <script src="/static/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    {% block script %}
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+
+<div class="container">
+
+      <fieldset class="max-w-100 border p-5 m-5 mt-0 rounded">
+        <legend  class="float-none w-auto p-2"><h1 class="text-primary">Minhas Receitas</h1></legend>
+        <div class="d-flex justify-content-end">
+          <a href="/criarReceita"><img style="height: 2rem;" src="static/lib/bootstrap-icons/plus-circle.svg" alt="Imagem mais"></a>
+        </div>
+          <div class="d-flex flex-wrap">
+            <!-- Card 1 -->
+
+              {% for r in receitas %}
+              <div class="card m-2">
+                <img src={{ "/static/imagens/receitas/" + ('%04d' | format(r.id)) + ".jpg" }} class="card-img-top" style="height: 15rem; width: 15rem;">
+                <!-- <img src="static/imagens/carne.jpg" style="height: 15rem;" class="card-img-top" alt="Receita 1"> -->
+                <div class="card-body ">
+                  <div class="d-flex justify-content-between">
+                    <h5 class="card-title">{{ r.titulo }}</h5>
+                    <div>
+                      <a href="/editarReceita"><img src="static/imagens/editar.svg" style="height: 2rem;" alt="Editar"></a>
+                      <a href="/excluir_receita/{{ r.id }}" class="btn btn-dark btn-sm rounded-5" title="Excluir" data-bs-toggle="tooltip" data-bs-placement="left">
+                        <i class="bi bi-trash"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <br>
+              {% endfor %}
+          </div>
+          <br>
+          <nav class="z-0">
+            <ul class="pagination ms-2">
+              <li class="page-item {{ 'disabled' if paginaAtual == 1 else '' }}">
+                <a class="page-link" href="/minhasReceitas?pn=1&ps={{ tamanhoPagina }}">
+                  <i class="bi bi-arrow-left"></i>
+                </a>
+              </li>
+      
+              <li class="page-item {{ 'disabled' if paginaAtual == 1 else '' }}">
+                <a class="page-link" href="/minhasReceitas?pn={{ paginaAtual - 1 }}&ps={{ tamanhoPagina }}">
+                  <i class="bi bi-arrow-left-short"></i>
+                </a>
+              </li>
+      
+              {% for i in range(totalPaginas) %}
+                <li class="page-item {{ 'active' if i + 1 == paginaAtual else '' }}">
+                  <a class="page-link" href="/minhasReceitas?pn={{ i + 1 }}&ps={{ tamanhoPagina }}">{{ i + 1 }} 
+                  </a> 
+                </li>
+                {% endfor %}
+      
+                <li class="page-item {{ 'disabled' if paginaAtual == totalPaginas else '' }}">
+                  <a class="page-link" href="/minhasReceitas?pn={{ paginaAtual + 1 }}&ps={{ tamanhoPagina }}">
+                    <i class="bi bi-arrow-right-short"></i>
+                  </a>
+                </li>
+      
+                <li class="page-item {{ 'disabled' if paginaAtual == totalPaginas else '' }}">
+                  <a class="page-link" href="/minhasReceitas?pn={{ totalPaginas }}&ps={{ totalPaginas }}">
+                    <i class="bi bi-arrow-right"></i>
+                  </a>
+                </li>
+      
+              
+                      
+      
+            </ul>
+          </nav>
+
+      </fieldset>
+
+</div>
+
+
+{% endblock %}

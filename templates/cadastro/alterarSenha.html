@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+
+<form class="p-2 border rounded" method="post" action="usuario/alterarSenha">
+<div class="container">
+  <h1 class="text-secondary ms-2">Alterar Senha</h1>
+  <br><br>
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+          <div class="row mt-2 mb-2 me-2">
+            <div class="col-md-1 d-flex  flex-column justify-content-center">
+                <p class="text-primary mt-3 ms-3" style="font-size: 2rem"><i class="bi bi-lock-fill"></i></p>
+            </div>
+            <div class="col-md-11 text-right d-flex flex-column justify-content-center">
+                <input name="senhaAtual" type="password" id="senhaAtual" class="form-control form-control-lg login-input w-100" placeholder="Senha atual" required>
+              
+                <span class="text-danger d-none small"></span>
+            </div>
+          </div>
+          <div class="row mt-2 mb-2 me-2">
+              <div class="col-md-1 d-flex flex-column justify-content-center">
+                  <p class="text-primary mt-3 ms-3" style="font-size: 2rem"><i class="bi bi-arrow-clockwise"></i></p>
+              </div>
+              <div class="col-md-11 text-right d-flex flex-column justify-content-center">
+                  <input name="novaSenha" type="password" id="novaSenha" class="form-control form-control-lg login-input w-100" placeholder="Nova senha" />
+                  <span class="text-danger d-none small"></span>
+              </div>
+          </div>
+          <div class="row mt-2 mb-2 me-2">
+              <div class="col-md-1 d-flex flex-column justify-content-center">
+                  <p class="text-primary mt-3 ms-3" style="font-size: 2rem"><i class="bi bi-check-circle"></i></p>
+              </div>
+              <div class="col-md-11 text-right d-flex flex-column justify-content-center">
+                  <input name="confNovaSenha" type="password" id="confNovaSenha" class="form-control form-control-lg login-input w-100" placeholder="Confirmar nova senha" />
+                  <span class="text-danger d-none small"></span>
+              </div>
+          </div>
+          <div class="row mt-4 me-2">
+              <div class="col-md-1"></div>
+              <div class="col-md-11 d-flex justify-content-end">
+                  <button type="submit" class="fs-5 btn btn-primary text-white w-100">Alterar</button>
+              </div>
+          </div>
+          <div class="row mt-4 me-2">
+              <div class="col-md-1"></div>
+              <div class="col-md-5">
+                  <a class="m-0" href=/recuperacao>Esqueceu a senha?</a>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+      <div class="col-md-2"></div>
+</form>         
+
+   {% if erros: %}
+<script>
+    const validationErrors = {{ erros|tojson }};
+    const fieldValues = [];
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/static/js/formValidation.js"></script>
+<script type="text/javascript" src="js/scripts.js"></script>
+
+{% endif %}
+{% endblock %}

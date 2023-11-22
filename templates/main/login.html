@@ -1,0 +1,68 @@
+{% extends "base_sem_cab.html" %}
+
+{% block conteudo %}
+
+<div class="container">
+    <div class="p-2"></div>
+        <div class="row">
+            <div class="col-md-6">
+                <img src="/static/imagens/login_f2.jpg" class="img-fluid d-none d-md-inline" alt="Login Principal">
+            </div>
+            <div class="col-md-6 px-5 d-flex flex-column justify-content-center">
+                <div class="row">
+                    <div class="w-100">
+                        <img src="/static/imagens/logo_oficial.png" class="img-fluid mr-3 mt-5 mb-5 p-5 w-100" alt="Logo Oficial">
+                    </div>
+                </div>
+                <form class="p-2 border rounded w-100" method="post">
+                    <div class="row mt-2 mb-2 me-2">
+                        <div class="col-md-1 d-flex  flex-column justify-content-center">
+                            <p class="text-primary mt-3 ms-1" style="font-size: 2rem"><i class="bi bi-person-circle"></i></p>
+                        </div>
+                        <div class="col-md-11 text-right d-flex flex-column justify-content-center">
+                            <input name="email" type="text" id="email" class="form-control form-control-lg login-input w-100" placeholder="E-mail" />
+                            <span class="text-danger d-none small"></span>
+                        </div>
+                    </div>
+                    <div class="row mt-2 mb-2 me-2">
+                        <div class="col-md-1 d-flex flex-column justify-content-center">
+                            <p class="text-primary mt-3 ms-1" style="font-size: 2rem"><i class="bi bi-lock-fill"></i></p>
+                        </div>
+                        <div class="col-md-11 text-right d-flex flex-column justify-content-center">
+                            <input name="senha" type="password" id="senha" class="form-control form-control-lg login-input w-100" placeholder="Senha" />
+                            <span class="text-danger d-none small"></span>
+                        </div>
+                    </div>
+                    <div class="row mt-4 me-2">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-11 d-flex justify-content-end">
+                            <button type="submit" class="fs-5 btn btn-primary text-white w-100">Entrar</button>
+                        </div>
+                    </div>
+                    <div class="row mt-4 me-2">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-5">
+                            <a class="m-0" href=/recuperacao>Esqueceu a senha?</a>
+                        </div>
+                        <div class="col-md-6 d-flex">
+                            <div class="m-0 col-md-7 text-end">
+                                <p>Não possui conta?</p>
+                            </div>
+                            <div class="col-md-5 text-end">
+                                <a class="m-0" href=/cadastro>Crie sua conta</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% if erros and valores: %}
+<script>
+    const validationErrors = {{ erros|tojson }};
+    const fieldValues = {{ valores|tojson }};
+</script>
+<script src="/static/js/formValidation.js"></script>
+{% endif %}
+{% endblock %}
+

@@ -1,0 +1,212 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+<div class="container">
+  <div class="container mt-5">
+
+    <div class="row">
+        <!-- Coluna da Esquerda -->
+        <div class="col-md-6 pe-1">
+            <div class="row mb-3">
+              
+                <div class="col">
+                    <h2> Torradas integrais com pasta de abacate e ovos mexidos </h2>
+                </div>
+            </div>
+            <div class="row mb-3 border border-2 rounded border-info m-1">
+                <div class="col">
+                    <p class="mt-2 fs-5">
+                        <img src="static/imagens/pessoa.jpg" alt='Foto de perfil' style="width: 40px; height: 40px;"> _amanda.doarte
+                    </p>
+                    <img src="static/imagens/avocado.jpg" alt='Receita' style="width: 100%; height: auto;">
+                    <h4 class="mt-1"> Café da manhã, integral e pão
+                        <img class="img-fluid float-end m-1" src="static/lib/bootstrap-icons/send.svg" alt='Compartilhar' style="width: 25px; height: 25px;">
+                        <a href="/outros/comentario.html"> 
+                            <img class="img-fluid float-end m-1" src="static/lib/bootstrap-icons/chat.svg" alt='Chat/Comentário' style="width: 25px; height: 25px;">
+                        </a>
+                        <img class="img-fluid float-end m-1" src="static/lib/bootstrap-icons/heart.svg" alt='Curtir' style="width: 25px; height: 28px;">
+                        <img class="img-fluid float-end m-1" src="static/lib/bootstrap-icons/hand-thumbs-down.svg" alt='Descurtir' style="width: 25px; height: 28px;">
+                    </h4>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-center">
+                            <img src="static/lib/bootstrap-icons/basket.svg" alt='Cesta de supermercado' style="width: 30px; height: 30px;">
+                            <h3 class="ms-3 mt-2">Ingredientes</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-6 d-flex justify-content-end align-items-end">
+                        <button class="img-fluid m-1 bg-info border border-info rounded" id="botao-x3" onclick="triplicarNumeros()">x3</button> 
+                        <button class="img-fluid m-1 bg-info border border-info rounded" id="botao-x2" onclick="duplicarNumeros()">x2</button>
+                        <button class="img-fluid m-1 bg-info border border-info rounded" id="botao-x3" onclick="Numeros()">x1</button>
+                    </div>
+                </div>
+                <div class="row mt-4 overflow-y-scroll scroll" style="max-height: 280px;"">
+                    <div class="col-md-12 offset-md-12 fs-5">
+                        <p id="ingredientes">
+                            <input type="checkbox" id="ingrediente1" name="breakfast1" value="1" data-qtde="2">
+                            <label id="l1" for="pão">2 fatias de pão integral;</label><br>
+                          
+                            <input type="checkbox" id="ingrediente2" name="breakfast2" value="2" data-qtde="2">
+                            <label id="l2" for="avocado">1 avocado;</label><br>
+                
+                            <input type="checkbox" id="ingrediente3" name="breakfast3" value="3" data-qtde="2">
+                            <label id="l3" for="manteiga">2 colheres de chá de manteiga;</label><br>
+                        
+                            <input type="checkbox" id="ingrediente4" name="breakfast4" value="4" data-qtde="2">
+                            <label id="l4" for="ovo">4 ovos;</label><br>
+                
+                            <input type="checkbox" id="ingrediente5" name="breakfast5" value="5" data-qtde="2">
+                            <label id="l5" for="limão">1 limão taiti;</label><br>
+                
+                            <input type="checkbox" id="ingrediente6" name="breakfast6" value="6" data-qtde="2">
+                            <label id="l6" for="sal">1 colher de café de sal.</label><br>
+                
+                            <input type="checkbox" id="ingrediente7" name="breakfast7" value="7" data-qtde="2">
+                            <label id="l7" for="..."> 5 ....</label><br>
+
+                            <input type="checkbox" id="ingrediente8" name="breakfast8" value="8" data-qtde="2">
+                            <label id="l8" for="..."> 6 ....</label><br>
+
+                            <input type="checkbox" id="ingrediente9" name="breakfast9" value="9" data-qtde="2">
+                            <label id="l9" for="..."> 7 ....</label><br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Coluna da Direita -->
+        <div class="col-md-6 ps-1">
+            
+           <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-center">
+                            <img src="static/imagens/panela.svg" alt='Panela' style="width: 40px; height: 40px;"> 
+                            <h3 class="ms-2 mt-2">Modo de Preparo</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-4 overflow-y-scroll scroll" style="max-height: 400px;"">
+                    <div class="col-md-12 offset-md-12 fs-5">
+                        <ol type="1">
+                        <li> Coloque a manteiga na sua frigideira antiaderente. Quando a manteiga estiver derretida, quebre os dois ovos, adicione uma                                            pitada de sal e mexa até cozinhar. Reserve. </li>
+                        <li> Pique metade do avocado e amasse-o em uma tigela pequena. Adicione ½ limão taiti espremido, sal e pimenta a gosto.                                                   Misture bem e reserve.</li>
+                        <li>Na sua torradeira/forno/frigideira, coloque as duas fatias de pão integral e deixe tostar até que fiquem crocantes. </li>
+                        <li> Para servir, coloque o avocado no pão torrado e, na sequência, os ovos mexidos. Adicione um pouco de sal a gosto. Sirva                                              em seguida.</li>
+                        <li>...</li>
+                        <li>...</li>
+                        <li>...</li>
+                        <li>...</li>
+                        <li>...</li>
+                        <li>...</li>
+                        <li>...</li>
+                        </ol>
+                    </div>
+                </div>
+            
+            <div class="row mb-3 justify-content-center mt-5">
+                <div class="col-md-5 border border-info border-2 rounded d-flex align-items-center justify-content-center p-1">
+                    <img src="static/lib/bootstrap-icons/hourglass.svg" alt='Ampulheta' style="width: 30px; height: 30px;">
+                    <span class="fs-5">Tempo de Preparo: 45 min</span>
+                </div>
+                <div class="col-md-1 mb-3 mt-3"></div>
+                <div class="col-md-5 border border-info border-2 rounded d-flex align-items-center justify-content-center p-1">
+                    <img src="static/imagens/cloche.svg" alt='Cloche' style="width: 35px; height: 35px;">
+                    <span class="p-1 fs-5">Rendimento: 8 porções</span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col mt-4">
+                    <h3> <img src="static/lib/bootstrap-icons/list-ul.svg" alt='Ícone de lista' style="width: 30px; height: 40px;"> Descrição </h3>
+                    <div class="border border-3 border-info rounded mt-4" style="height: 250px; ">                    
+                        <p class="m-3 fs-4">Descrição da receita</p>
+                    </div>
+                    <a href="receita.html">
+                        <img class="d-flex img-fluid float-end mt-3" src="static/lib/bootstrap-icons/cloud-upload.svg" alt='Baixar' style="width: 30px; height: 30px;"> 
+                        <p class="d-flex img-fluid float-end mt-2 m-2 fs-4"> Baixar PDF</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+  
+</div>
+
+
+
+<script>
+
+  var contadorClicadas3 = 0;
+
+    function triplicarNumeros() {
+        var labels = document.querySelectorAll("#ingredientes > label");
+
+        for (var i = 0; i < labels.length; i++) {
+            var textoOriginal = labels[i].textContent;
+            var numeros = textoOriginal.match(/\d+/g);
+
+            if (numeros) {
+                var textoNovo = textoOriginal;
+
+                for (var j = 0; j < numeros.length; j++) {
+                    var numero = parseInt(numeros[j]);
+                    var novoNumero = numero * 3;
+
+                    textoNovo = textoNovo.replace(numeros[j], novoNumero);
+                }
+
+                labels[i].textContent = textoNovo;
+            }
+        }
+
+        contadorClicadas3++;
+
+        if (contadorClicadas3 >= 1) {
+            document.getElementById("botao-x3").disabled = true;
+        }
+    }
+
+  
+    var contadorClicadas2 = 0;
+
+    function duplicarNumeros() {
+        var labels = document.querySelectorAll("#ingredientes > label");
+
+        for (var i = 0; i < labels.length; i++) {
+            var textoOriginal = labels[i].textContent;
+            var numeros = textoOriginal.match(/\d+/g);
+
+            if (numeros) {
+                var textoNovo = textoOriginal;
+
+                for (var j = 0; j < numeros.length; j++) {
+                    var numero = parseInt(numeros[j]);
+                    var novoNumero = numero * 2;
+
+                    textoNovo = textoNovo.replace(numeros[j], novoNumero);
+                }
+
+                labels[i].textContent = textoNovo;
+            }
+        }
+
+        contadorClicadas2++;
+
+        if (contadorClicadas2 >= 1) {
+            document.getElementById("botao-x2").disabled = true;
+        }
+    }
+
+</script>
+
+
+
+{% endblock %}

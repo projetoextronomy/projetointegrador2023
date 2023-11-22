@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+
+   
+<form method="post">
+    <div class="container">
+        <h1 class="text-secondary mb-3">Criar Publicidade</h1>
+        
+        <div class="row">
+          <div class="col-md-4 fs-4 pe-3 border-end">
+            <label for="titulo">Título</label>
+            <input type="text" class="form-control mb-3" id="nome" placeholder="Ex:  PERIM28" value="" required="" name="titulo">
+            <label for="conteudo">Conteúdo</label>
+            <textarea type="text" class="form-control mb-3" id="desconto" placeholder="Ex: 20" value="" required="" name="valor"></textarea>
+        <div class="col-12 col-md-4"></div>
+        <div class="col-12 col-md-4">
+          <div class="h-75"></div>
+          <div class="d-flex justify-content-end">
+            <button id="btnSalvar" class="fs-5 btn btn-primary text-white mb-2" type="submit" style="width: 100px;">Salvar</button>
+            <button class="fs-5 btn btn-primary text-white mb-2 mx-2" type="reset" style="width: 100px;">Cancelar</button>
+          </div>    
+        </div>
+      </div>
+    </div>
+
+      
+{% endblock %}

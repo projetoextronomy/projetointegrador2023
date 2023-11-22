@@ -1,0 +1,223 @@
+{% extends "base_simples.html" %}
+
+{% block conteudo %}
+
+
+<form method="post">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h1 class="text-secondary">Meu Carrinho</h1>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-md-4 order-md-2 mb-4 mt-2">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          Carrinho
+        </h4>
+        <ul class="list-group mb-3">
+          <li class="list-group-item d-flex justify-content-between lh-condensed">
+            <div>
+              <h6 class="my-0 fs-5">Usuário PRO Mensal</h6>
+              <small class="text-muted">Assinatura mensal do plano de usuário PRO do site Extronomy</small>
+            </div>
+            <span class="text-muted fs-5">R$20,0</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between">
+            <span class="fs-5">Total (BRL)</span>
+            <strong class="fs-5">R$20,0</strong>
+          </li>
+        </ul>
+
+      </div>
+      <div class="col-md-8 order-md-1">
+        <h4 class="mb-3">Endereço de Cobrança</h4>
+        <div class="needs-validation" novalidate="">
+          <div class="row">
+            <div class="col-md-6 mb-3 fs-4">
+              <label for="nome">Nome</label>
+              <input type="text" name="nome" class="form-control" id="nome" value="{{ usuario.nome }}" required>
+            </div>
+            <div class="col-md-6 mb-3 fs-4">
+              <label for="endereco">Endereço</label>
+              <input type="text" name="endereco" class="form-control" id="endereco" value="{{ usuario.endereco }}" required>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mb-3 fs-4">
+              <label for="email">Email</label>
+              <input type="email" name="email" class="form-control" value="{{ usuario.email }}" id="email"  placeholder="">
+            </div>
+            <div class="col-md-6 mb-3 fs-4">
+              <label for="pais" name="pais">País</label>
+              <select name="pais" class="custom-select d-block w-100 form-control" id="pais" required="">
+                <option value="">Escolha...</option>
+                <option>Brasil</option>
+                <option>Bélgica</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mb-3 fs-4">
+              <label for="estado" name="estado">Estado</label>
+              <select name="estado" class="custom-select d-block w-100 form-control" id="estado" required="">
+                <option value="">Escolha...</option>
+                <option>Espírito Santo</option>
+                <option>Acre</option>
+              </select>
+            </div>
+            <div class="col-md-6 mb-3 fs-4">
+              <label for="cep">CEP</label>
+              <input name="cep" type="text" class="form-control" id="cep" placeholder="" required="">
+            </div>
+          </div>
+
+          <hr class="mb-4">
+
+          <h4 class="mb-3">Pagamento</h4>
+
+          <div class="d-block my-3">
+            <div class="custom-control custom-radio">
+              <input id="cartao" name="modo" type="radio" class="custom-control-input" checked value="cartao">
+              <label class="custom-control-label fs-5" for="cartao">Cartão de crédito ou débito</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input id="pix" name="modo" type="radio" class="custom-control-input" value="pix">
+              <label class="custom-control-label fs-5" for="pix">Pix</label>
+            </div>
+          </div>
+
+          <div id="cartaoCampos" style="display: block;">
+            <div class="row">
+              <div class="col-md-6 mb-3 fs-4">
+                <label for="nome_Titular">Nome do Titular</label>
+                <input type="text" name="nome_Titular" class="form-control" id="nome_Titular" placeholder="">
+              </div>
+              <div class="col-md-6 mb-3 fs-4">
+                <label for="numero_Cartao">Número do cartão</label>
+                <input type="text" name="numero_Cartao" class="form-control" id="numero_Cartao" placeholder="">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3 mb-3 fs-4">
+                <label for="data_Expiracao">Data de expiração</label>
+                <input type="date" name="data_Expiracao" class="form-control" id="data_Expiracao" placeholder="">
+              </div>
+              <div class="col-md-3 mb-3 fs-4">
+                <label for="cvv">CVV</label>
+                <input type="text" name="cvv" class="form-control" id="cvv" placeholder="">
+              </div>
+              <div class="col-md-3 mb-3 fs-4">
+                <label for="parcela" name="parcelas">Parcelar em</label>
+                <select name="parcela" class="custom-select d-block w-100 form-control" id="parcelas">
+                  <option value="">Escolha...</option>
+                  <option value="0">Débito</option>
+                  <option value="1">1x</option>
+                  <option value="2">2x</option>
+                  <option value="3">3x</option>
+                  <option value="4">4x</option>
+                  <option value="5">5x</option>
+                  <option value="6">6x</option>
+                  <option value="7">7x</option>
+                  <option value="8">8x</option>
+                  <option value="9">9x</option>
+                  <option value="10">10x</option>
+                  <option value="11">11x</option>
+                  <option value="12">12x</option>
+                </select>
+              </div>
+              <div class="col-md-3 mb-3 fs-4">
+                <img class="imgband" src="static/imagens/bandeiras.jpg" alt="Ícone das bandeiras de cartão">
+              </div>
+            </div>
+          </div>
+          <div id="pixCampos" style="display: none;" class="text-center">
+          </div>
+
+          <hr class="mb-4">
+
+          <div class="col-md-3">
+            <div class="h-75"></div>
+            <div class="d-flex justify-content-end">
+              <button id="btnSalvar" class="fs-5 btn btn-primary text-white mb-2" type="submit" style="width: 100px;">Salvar</button>
+              <button class="fs-5 btn btn-primary text-white mb-2 mx-2" type="reset" style="width: 100px;">Cancelar</button>
+            </div>
+          </div>
+
+          <!-- <button type="button" class="btn btn-primary btn-lg btn-block text-white fs-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    Finalizar compra
+                  </button> -->
+
+          <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content bg-primary w-75" style="border-radius: 30px;">
+                <div class="m-2 border border-3 border-white" style="border-radius: 30px;">
+                  <div class="d-flex justify-content-center align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-check-circle text-white mt-4" viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                      <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
+                    </svg>
+                    <button id="closeModalBtn" type="button" class="btn-close ml-auto position-absolute end-0 m-3 mt-1" data-bs-dismiss="modal" aria-label="Close"></button>
+
+                  </div>
+                  <div class="d-flex mt-3 fs-5 text-white justify-content-center">
+                    <p class="text-center">Bem-vindo(a) à comunidade PRO!</p>
+                  </div>
+                  <div class="d-flex fs-5 text-white justify-content-center">
+                    <p class="text-center mb-4">Compra realizada com sucesso!</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+
+<script>
+  const radioCartao = document.getElementById("cartao");
+  const radioPix = document.getElementById("pix");
+
+  const cartaoCampos = document.getElementById("cartaoCampos");
+  const pixCampos = document.getElementById("pixCampos");
+
+  // Função para ocultar os campos do cartão e o QR code
+  function ocultarCampos() {
+    cartaoCampos.style.display = "none";
+    pixCampos.style.display = "none";
+  }
+
+  // Mostrar os campos do cartão por padrão ao carregar a página
+  ocultarCampos();
+  cartaoCampos.style.display = "block";
+
+  radioCartao.addEventListener("click", () => {
+    ocultarCampos();
+    cartaoCampos.style.display = "block";
+  });
+
+  radioPix.addEventListener("click", () => {
+    ocultarCampos();
+    pixCampos.style.display = "block";
+
+    // Adicionar a imagem do QR code do Pix via JavaScript
+    pixCampos.innerHTML = '<img src="static/lib/bootstrap-icons/qr-code.svg" style="width: 60px; height: 60px;">';
+  });
+
+
+  // Obtém uma referência para o modal
+  var modal = document.getElementById('staticBackdrop'); // Substitua 'seuModalID' pelo ID correto do modal
+
+  // Adiciona um ouvinte de evento para o evento 'hidden.bs.modal' (quando o modal é fechado)
+  modal.addEventListener('hidden.bs.modal', function (event) {
+    // Redireciona para o feed
+    window.location.href = 'https://projetofuncionando.anaamisth.repl.co/feed'; // Substitua pelo caminho real para o feed
+  });
+</script>
+
+{% endblock %}

@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+
+<div class="container">
+  <div class="row">
+        <div class="col-6">
+          <div class="d-flex">
+            <img class="img-fluid float-end m-1" src="static/lib/bootstrap-icons/chat.svg" alt='Chat/Comentário' style="width: 25px; height: 25px;">
+            <h1 class="text-secondary ms-2">Comentários: </h1>
+          </div>
+          <div class="col-md-5"></div>
+          <div class="row mt-3 mb-3">
+            <div class="col">
+              <h3>Caldo de Abóbora</h3> 
+            </div>
+          </div>
+          <div class="row mb-3 border border-2 rounded border-info m-1" style="width: 525px; height: 490px;">
+            <div class="col">
+              <p class="mt-2 fs-5"> <img src="static/imagens/pessoa.jpg" style="width: 40px; height: 40px;"> _amanda.doarte </p>
+              <img src="static/imagens/caldo.jpg" style="width: 500px; height: 375px;"> 
+              <h6 class="fs-5 mt-1"> Café da manhã, integral e pão  
+                <img class="img-fluid float-end m-1" src="static/lib/bootstrap-icons/send.svg" alt='Compartilhar' style="width: 25px; height: 25px;">
+                <a href="https://projetofuncionando.anaamisth.repl.co/comentario"><img class="img-fluid float-end m-1" src="static/lib/bootstrap-icons/chat.svg" alt='Chat/Comentário' style="width: 25px; height: 25px;"></a> 
+                <img class="img-fluid float-end m-1" src="static/lib/bootstrap-icons/heart.svg" alt='Curtir' style="width: 25px; height: 28px;"> 
+                <img class="img-fluid float-end m-1" src="static/lib/bootstrap-icons/hand-thumbs-down.svg" alt='Descurtir' style="width: 25px; height: 28px;">
+                                                               
+                        
+              </h6>
+            </div>
+          </div>
+          <h8 class="fs-5 text-secondary">5 comentários </h8>
+        </div>
+        <div class="col-6">
+          <div class="form-floating mt-5">
+            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+            <label class="fs-5 mb-2" for="floatingTextarea2">O que achou?</label>
+            <input type="image" class="mt-2 mb-2" src="static/lib/bootstrap-icons/check-circle.svg" style="height: 1.5rem" alt="Enviar Comentário">
+          </div>
+
+          <!-- comentário 1 -->
+          <div> <!-- Div da caixa de comentários -->
+            <div class="card mt-2">
+              <div class="card-body">
+                <div>
+                  <img src="static/imagens/rosto1.jpg" alt="Ícone" class="rosto" align="left">
+                </div>
+                <div>
+                  <p class="fs-5">Adorei a receita. Parabéns!</p>
+                </div>
+  
+                <div class="container mt-5">
+                  <button class="fs-5 btn btn-primary btnAdicionarComentario text-white">Responder</button>
+                  <div class="novoComentarioDiv mt-3" style="display: none;">
+                    
+                    <div class="d-flex justify-content-between">
+                      <input type="text" class="fs-5 form-control" placeholder="Digite seu comentário">
+                      <label class="btnSalvarComentario ms-2 mt-2"><img alt="Check" class="img-fluid" style="height: 1.3rem"
+                      src="static/lib/bootstrap-icons/check-circle.svg" alt="Pesquisar restriçoes"></label>
+                      <label class="close mt-2 ms-2"><img src="static/imagens/x.svg" alt="Fechar" style="height:0.5rem"></label>
+                    </div>
+                  </div>
+                </div> 
+              </div>  
+            </div>
+          </div> 
+        </div>
+      </div>
+</div>
+
+
+  <script>
+        const btnAdicionarComentario = document.querySelectorAll('.btnAdicionarComentario');
+        const novoComentarioDiv = document.querySelectorAll('.novoComentarioDiv');
+        const closeButtons = document.querySelectorAll('.close');
+
+        btnAdicionarComentario.forEach((btn, index) => {
+            btn.addEventListener('click', () => {
+                novoComentarioDiv[index].style.display = 'block';
+            });
+        });
+
+        closeButtons.forEach((closeButton, index) => {
+            closeButton.addEventListener('click', () => {
+                novoComentarioDiv[index].style.display = 'none';
+            });
+        });
+
+        const btnSalvarComentario = document.querySelectorAll('.btnSalvarComentario');
+
+        btnSalvarComentario.forEach((btn, index) => {
+            btn.addEventListener('click', () => {
+                const inputComentario = novoComentarioDiv[index].querySelector('input');
+                const comentario = inputComentario.value;
+                console.log('Comentário salvo:', comentario);
+                inputComentario.value = ''; // Limpa o campo após salvar
+            });
+        });
+    </script>
+
+
+
+
+{% endblock %}

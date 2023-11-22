@@ -1,0 +1,54 @@
+<!-- /templates/projeto/novaimagem.html -->
+{% extends "base.html" %}
+
+{% block conteudo %}
+
+<div class="container">
+<h1>Nova Imagem para o Usuário 
+    <span class="text-primary">{{ usuario.nome }}</span>
+</h1>
+<hr>
+<form method="post" enctype="multipart/form-data">    
+    <!-- CAMPO DA IMAGEM -->
+    <div class="col-12 mb-3">
+        <label for="arquivoImagem" class="form-label">Selecione o Arquivo de Imagem</label>
+        <input class="form-control" type="file" id="arquivoImagem" name="arquivoImagem" onchange="previewImage(event)" accept="image/jpeg;image/png" required>
+        <span class="text-danger d-none small"></span>
+    </div>
+    <!-- --------------- -->
+    <div class="mb-3">
+        <a href="/configuracoes" class="btn btn-secondary me-2">Cancelar</a>
+        <button class="btn btn-primary" type="submit">Salvar</button>
+    </div>
+</form>
+<!-- LOCAL PARA MOSTRAR IMAGEM SELECIONADA -->
+<div class="col-3">
+    <img id="preview" src="" class="border border-2 rounded rounded-3 p-2 w-100 d-none" />
+</div>
+<!-- ------------------------------------- -->
+
+</div>
+
+
+<!-- SCRIPT PARA MOSTRAR IMAGEM SELECIONADA -->
+<script>
+    function previewImage(event) {
+        var reader = new FileReader();
+        reader.onload = function () {
+            var preview = document.getElementById('preview');
+            preview.src = reader.result;
+            preview.classList.remove('d-none');
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    }
+</script>
+<!-- -------------------------------------- -->
+{% if erros and valores: %}
+<script>
+    const validationErrors = {{ erros|tojson }};
+    const fieldValues = {{ valores|tojson }};
+</script>
+<script src="/static/js/formValidation.js"></script>
+
+{% endif %}
+{% endblock %}

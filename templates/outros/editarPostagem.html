@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+
+<style>
+      .background-image {
+          width: 100%;
+          height: auto;
+          opacity: 0.7;
+      }
+      
+      .overlay-image {
+          position: absolute;
+          top: 40%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+      }
+</style>
+<div class="container">
+  <div class="row">
+    <div>
+       <fieldset class="max-w-100 border p-2 m-2 mt-0 rounded">
+          <legend  class="float-none w-auto p-2"><h1 class="text-primary">Minhas Postagens</h1></legend>
+        <div class="container mt-5">
+          <div class="row row-cols-1 row-cols-md-3 g-4">
+            <!-- Card 1 -->
+            <div class="col">
+              <div class="card">
+                <img src="static/imagens/minhapostagem.jpg" class="card-img-top background-image" alt="Postagem 1">
+                <input type="file" class="form-control" style="display: none;" id="inputGroupFile02">
+                <label for="inputGroupFile02"><img src="static/imagens/upload.svg" style="width: 7rem;" alt="Upload" class="overlay-image img-fluid pb-4"></label>
+                <div class="card-body">
+                  <div class="d-flex justify-content-between">
+                    <h5 class="card-title">Prato do dia</h5>
+                    <div>
+                      <p class="fs-4"><i class="bi bi-check-circle"></i></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+       <fieldset class="max-w-100 border p-2 m-2 mt-0 rounded">
+        <legend  class="float-none w-auto p-2"><h1 class="text-primary">Postagens Salvas</h1></legend>
+        <div class="container mt-5">
+          <div class="row row-cols-1 row-cols-md-3 g-4">
+            <!-- Card 2 -->
+            <div class="card mb-3 me-2 border-info border-2 w-80">
+          <div class="card-header bg-white d-flex align-items-center">
+            <img src="static/imagens/perfil.svg"  alt="Foto de Perfil" class="rounded-circle me-2" style="width: 2rem;">
+            <span class="flex-grow-1 fs-5">_laizinha</span>
+            <button class="btn btn-primary btn-sm text-white">Seguir</button>
+          </div>
+          <img src="static/imagens/prato.jpg" alt="Imagem da Postagem">
+          <div class="card-body">
+            <div class="d-flex justify-content-between">
+              <div>
+                <label type="submit"><p style="font-size: 1.5rem;"><i class="bi bi-send"alt='Compartilhar'></i></p></label>
+                <label type="submit"><p style="font-size: 1.5rem;"><i class="bi bi-heart text-dark" alt='Curtir'></i></p></label>
+                <label type="submit"><p style="font-size: 1.5rem;"><i class="bi bi-hand-thumbs-down text-dark" alt='Dislike'></i></p></label>
+                <label><a href="comentárioPostagem.html"><p style="font-size: 1.5rem;"><i class="bi bi-chat text-dark" alt='Comentários'></i></p></a></label> 
+              </div>
+              <label type="submit"><p class="fs-4 text-dark"><i class="bi bi-bookmark-fill"></i></p></label>
+            </div>
+            
+            <p class="card-text fs-5">Prato do dia!</p>
+          </div>
+        </div>
+        <div class="card mb-3 border-info me-2 border-2 w-80">
+          <div class="card-header bg-white d-flex align-items-center">
+            <img src="static/imagens/perfil.svg" alt="Foto de Perfil" class="rounded-circle me-2" style="width: 2rem;">
+            <span class="flex-grow-1 fs-5">_taylor_swift</span>
+            <button class="btn btn-primary btn-sm text-white">Seguir</button>
+          </div>
+          <img src="static/imagens/mexido.jpg" alt="Imagem da Postagem">
+          <div class="card-body">
+            <div class="d-flex justify-content-between">
+              <div>
+                <label type="submit"><p style="font-size: 1.5rem;"><i class="bi bi-send"alt='Compartilhar'></i></p></label>
+                <label type="submit"><p style="font-size: 1.5rem;"><i class="bi bi-heart text-dark" alt='Curtir'></i></p></label>
+                <label type="submit"><p style="font-size: 1.5rem;"><i class="bi bi-hand-thumbs-down text-dark" alt='Dislike'></i></p></label>
+                <label><a href="comentárioPostagem.html"><p style="font-size: 1.5rem;"><i class="bi bi-chat text-dark" alt='Comentários'></i></p></a></label> 
+              </div>
+              <label type="submit"><p class="fs-4 text-dark"><i class="bi bi-bookmark-fill"></i></p></label>
+            </div>
+            
+            <p class="card-text fs-5">Mexido com brócolis!</p>
+          </div>
+        </div>
+        <div class="card mb-3 border-info border-2 w-80 ">
+          <div class="card-header bg-white d-flex align-items-center">
+            <img src="static/imagens/perfil.svg" alt="Foto de Perfil" class="rounded-circle me-2" style="width: 2rem;">
+            <span class="flex-grow-1 fs-5">_taylor_swift</span>
+            <button class="btn btn-primary btn-sm text-white">Seguir</button>
+          </div>
+          <img src="static/imagens/mexido.jpg" alt="Imagem da Postagem">
+          <div class="card-body">
+            <div class="d-flex justify-content-between">
+              <div>
+                <label type="submit"><p style="font-size: 1.5rem;"><i class="bi bi-send"alt='Compartilhar'></i></p></label>
+                <label type="submit"><p style="font-size: 1.5rem;"><i class="bi bi-heart text-dark" alt='Curtir'></i></p></label>
+                <label type="submit"><p style="font-size: 1.5rem;"><i class="bi bi-hand-thumbs-down text-dark" alt='Dislike'></i></p></label>
+                <label><a href="comentárioPostagem.html"><p style="font-size: 1.5rem;"><i class="bi bi-chat text-dark" alt='Comentários'></i></p></a></label> 
+              </div>
+              <label type="submit"><p class="fs-4 text-dark"><i class="bi bi-bookmark-fill"></i></p></label>
+            </div>
+            
+            <p class="card-text fs-5">Mexido com brócolis!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+{% endblock %}

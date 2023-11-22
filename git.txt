@@ -1,0 +1,9 @@
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIACtvv6lIIua4SUXbR0Bv3NGp9XfYRs9noLFrOzotbaO luisa.b.lunz@hotmail.com
+
+echo "# projetointegrador2023" >> README.md
+  git init
+  git add README.md
+  git commit -m "first commit"
+  git branch -M main
+  git remote add origin git@github.com:projetoextronomy/projetointegrador2023.git
+  git push -u origin main

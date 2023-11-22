@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+
+<div class="container">
+    
+<div class="d-flex justify-content-between align-items-center">
+    <h1>Tabela de Usuários</h1>
+</div>
+
+<table class="table table-striped">
+    {% if usuarios|length == 0 %}
+    <p>Não há usuários cadastrados.</p>
+    {% else %}
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Senha</th>
+            <th>Endereço</th>
+            <th>Data de Nascimento</th>
+            <th>Sexo</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for u in usuarios %}
+            {% if not (u.admin) %}
+            <tr class="fs-5">
+              <tr data-id="{{ u.id }}">
+                <td>
+                    {{ u.nome }}
+                </td>
+                <td>
+                    {{ u.email }}
+                </td>
+                <td>
+                    {{ u.senha }}
+                </td>
+                <td>
+                    {{ u.endereco }}
+                </td>
+                <td>
+                    {{ u.dataNascimento }}
+                </td>
+                <td>
+                    {{ u.sexo }}
+                </td>
+              <td class="d-none">
+                    {{ u.token }}
+                </td>
+              <td class="d-none">
+                    {{ u.admin }}
+                </td>
+                <td >
+                    <a href="/preferencias">Preferências</a>
+                </td>
+                <td>
+                  <a href="/excluir/{{ u.id }}" class="btn btn-danger btn-sm" title="Excluir" data-bs-toggle="tooltip" data-bs-placement="left">
+                  <i class="bi bi-trash"></i>
+                </a>
+                </td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+    </tbody>
+        {% endif %}
+</table>
+<hr>
+
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script src="/static/js/ativarTooltips.js"></script>
+{% if alunos|length > 0: %}
+<script src="/static/js/desaprovarCadastro.js"></script>
+{% endif %}
+{% endblock %}

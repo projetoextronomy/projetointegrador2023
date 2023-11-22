@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+<div class="container">
+  <h1 class="text-secondary mt-3">Filtragem </h1>
+ <p class="fst-italic text-warning mt-3 mb-5">Resultado para: Pasta de abacate / Tags: Café da Manhã, Integral, Pão</p>
+  <div class="row">
+    <div class="col-md-4">
+      <a href="https://projetofuncionando.anaamisth.repl.co/receita" class="text-decoration-none text-black"> 
+        <div class="card recipe-card">
+          <img src="static/imagens/avocado.jpg" class="card-img-top" style="height: 15rem;" alt="Torradas integrais com pasta de abacate e ovos mexidos">
+          <div class="card-body">
+             <div class="d-flex justify-content-between">
+              <div class="d-flex inline">
+                <img src="static/lib/bootstrap-icons/hourglass-split.svg" alt="Ampulheta" style="height: 1.3rem;"><p class="card-text ms-2">45 min</p>
+              </div>
+              <div class="d-flex inline">
+                <img class="img-fluid float-end" src="static/lib/bootstrap-icons/heart.svg" alt='Curtir' style="width: 25px; height: 28px;">
+                <p class="card-text ms-2" style="height: 3rem">23.5K</p>
+              </div>
+              <div class="d-flex inline">
+                <img src="static/imagens/refeicao.svg" style="width: 1.3rem; height: 1.3rem;">
+                <p class="card-text ms-2">8 porções</p>
+              </div>
+            </div> 
+            <h5 class="card-title mt-2 ">Torradas integrais com pasta de abacate e ovos mexidos</h5>
+          </div>
+      </a>
+    </div>
+  </div>
+    
+    <div class="col-md-4">
+      <div class="card recipe-card">
+        <img src="static/imagens/torrada2.jpg" class="card-img-top" style="height: 15rem;" alt="Torradas Italianas Integrais">
+        <div class="card-body">
+          
+          <div class="d-flex justify-content-between">
+            <div class="d-flex inline">
+              <img src="static/lib/bootstrap-icons/hourglass-split.svg" alt="Ampulheta" style="height: 1.3rem;"><p class="card-text ms-2">20 min</p>
+            </div>
+            <div class="d-flex inline">
+              <img class="img-fluid float-end" src="static/lib/bootstrap-icons/heart.svg" alt='Curtir' style="width: 25px; height: 28px;">
+              <p class="card-text ms-2">18.1K</p>
+            </div>
+            <div class="d-flex inline">
+              <img src="static/imagens/refeicao.svg" style="width: 1.3rem; height: 1.3rem;">
+              <p class="card-text ms-2" style="height: 3rem">4 porções</p>
+            </div>
+          </div> 
+          <h5 class="card-title mt-2">Torradas Italianas Integrais</h5>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-4">
+      
+      <div class="card recipe-card">
+        <img src="static/imagens/torrada3.jpg" class="card-img-top" style="height: 15rem;" alt="Pão australiano Integral com creme de avocado, romã e ovos cozidos">
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <div class="d-flex inline">
+              <img src="static/lib/bootstrap-icons/hourglass-split.svg" alt="Ampulheta" style="height: 1.3rem;"><p class="card-text ms-2">30 min</p>
+            </div>
+            <div class="d-flex inline">
+              <img class="img-fluid float-end" src="static/lib/bootstrap-icons/heart.svg" alt='Curtir' style="width: 25px; height: 28px;">
+              <p class="card-text ms-2">16.5 K</p>
+            </div>
+            <div class="d-flex inline">
+              <img src="static/imagens/refeicao.svg" style="width: 1.3rem; height: 1.3rem;">
+              <p class="card-text ms-2">2 porções</p>
+            </div>
+          </div> 
+          <h5 class="card-title mt-2" style="height: 3rem;">Pão australiano Integral com creme de avocado, romã e ovos cozidos</h5>
+        </div>
+      </div>
+    </div>
+  </div>  
+</div>
+
+
+
+
+{% endblock %}

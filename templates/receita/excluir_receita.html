@@ -1,0 +1,18 @@
+<!-- /templates/main/index.html -->
+{% extends "base.html" %}
+
+{% block conteudo %}
+
+<div class="container">
+<h1>Exclusão de receitas</h1>
+<hr>
+<p class="lead">Deseja realmente excluir a receita <b>{{ receita.titulo }}</b>?</p>
+<form method="post">
+    <input type="hidden" name="id" value="{{ receita.id }}">
+    <div class="mb-3">
+        <a href="/minhasReceitas" class="fs-5 btn btn-primary text-white mb-2">Cancelar</a>
+        <button class="fs-5 btn btn-primary text-white mb-2" type="submit">Excluir</button>
+    </div>
+</form>
+</div>
+{% endblock %}
