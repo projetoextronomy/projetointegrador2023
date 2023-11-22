@@ -23,12 +23,13 @@
                 <img src="/static/imagens/cupons/{{ c.id|id_img }}.jpg" class="card-img-top" alt="Imagem do cupom"> 
                 <!-- <img src="static/imagens/perim.jpg" class="card-img-top w-75 mx-auto d-block mt-3 mb-2" alt="Cupom 1"> -->
               </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item bg-primary text-white text-center">{{ c.valor }}% DE DESCONTO*
-                <a href="/excluir_cupom/{{ c.id }}" class="btn btn-sm rounded-5 align-items-end " title="Excluir" data-bs-toggle="tooltip" data-bs-placement="left">
-                  <i class="bi bi-trash"></i></a>
-                </li>
-              </ul>
+              <div class="d-flex justify-content-between bg-primary">
+                <div class="text-white ms-3 mt-3">{{ c.valor }}% DE DESCONTO*</div>
+                <div class="m-2">
+                  <a href="/excluir_cupom/{{ c.id }}" class="btn btn-sm rounded-5 align-items-end " title="Excluir" data-bs-toggle="tooltip" data-bs-placement="left">
+                  <i class="bi bi-trash fs-6 text-white"></i></a>
+                </div>
+              </div>
             </div>
             <p style="font-size: 0.7rem;">*{{ c.condicao }} válidos até {{ c.hr_fim }} do dia {{ c.dt_fim }}</p>
           </div>

@@ -167,11 +167,11 @@
         <div class="card mb-3 border-info border-2 w-80">
           <div class="card-header bg-white d-flex align-items-center">
             <!-- <img src="static/imagens/perfil.svg" alt="Foto de Perfil" class="rounded-circle me-2" style="width: 3rem;"> -->
-            <img src="/static/imagens/usuarios/{{ p.usuario|id_img }}.jpg" class="d-flex align-self-center me-3" width="60" alt="Imagem do usuário {{ p.nome_autor }}" style="border-radius: 50%;">
+            <img src="/static/imagens/usuarios/{{ p.usuario|id_img }}.jpg" class="d-flex align-self-center me-3" width="60px" alt="Imagem do usuário {{ p.nome_autor }}" style="border-radius: 50%;">
             <span class="flex-grow-1 fs-5">{{ p.nome_autor }}</span>
             <button class="btn btn-primary btn-sm text-white">Seguir</button>
           </div>
-          <img src="/static/imagens/postagens/{{ p.id|id_img }}.jpg" alt="Imagem da Postagem">
+          <img style="width: 40rem; height: 30rem;" src="/static/imagens/postagens/{{ p.id|id_img }}.jpg" alt="Imagem da Postagem">
           <div class="card-body">
             <div class="d-flex justify-content-between">
               <div>
@@ -184,7 +184,7 @@
                 <label type="submit">
                   <p style="font-size: 1.5rem;"><i class="bi bi-hand-thumbs-down text-dark" alt='Dislike'></i></p>
                 </label>
-                <label><a href="comentárioPostagem.html">
+                <label><a href="/comentarioPostagem">
                     <p style="font-size: 1.5rem;"><i class="bi bi-chat text-dark" alt='Comentários'></i></p>
                   </a></label>
               </div>

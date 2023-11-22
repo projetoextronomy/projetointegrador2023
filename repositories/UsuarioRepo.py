@@ -52,10 +52,10 @@ class UsuarioRepo:
 
     @classmethod
     def alterar(cls, usuario: Usuario) -> Usuario: 
-        sql = "UPDATE usuario SET nome=?, email=?, senha=?, endereco=?, dataNascimento=?, sexo=?, semgluten=?, vegetariano=?, lowcarb=?, semfrutosdomar=?, semlactose=?, vegano=?, integral=?, semleite=?, semacucar=?, semovo=?, semcacau=?, organico=?, token=?, admin=? WHERE id=?"
+        sql = "UPDATE usuario SET nome=?, email=?, endereco=?, dataNascimento=?, sexo=?, semgluten=?, vegetariano=?, lowcarb=?, semfrutosdomar=?, semlactose=?, vegano=?, integral=?, semleite=?, semacucar=?, semovo=?, semcacau=?, organico=? WHERE id=?"
         conexao = Database.criarConexao()
         cursor = conexao.cursor()
-        result = cursor.execute(sql, (usuario.nome, usuario.email, usuario.senha, usuario.endereco, usuario.dataNascimento, usuario.sexo,   usuario.semgluten, usuario.vegetariano, usuario.lowcarb, usuario.semfrutosdomar, usuario.semlactose, usuario.vegano, usuario.integral, usuario.semleite, usuario.semacucar, usuario.semovo, usuario.semcacau, usuario.organico, usuario.token, usuario.admin))
+        result = cursor.execute(sql, (usuario.nome, usuario.email, usuario.endereco, usuario.dataNascimento, usuario.sexo,   usuario.semgluten, usuario.vegetariano, usuario.lowcarb, usuario.semfrutosdomar, usuario.semlactose, usuario.vegano, usuario.integral, usuario.semleite, usuario.semacucar, usuario.semovo, usuario.semcacau, usuario.organico, usuario.id))
         if (result.rowcount>0):
             conexao.commit()
             conexao.close()

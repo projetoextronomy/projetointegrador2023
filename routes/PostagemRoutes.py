@@ -33,11 +33,20 @@ async def startup_event():
 @router.get("/minhasPostagens", response_class=HTMLResponse)
 async def getMinhasPostagens(request: Request, pn: int = 1, ps: int = 3, usuario: Usuario = Depends(validar_usuario_logado)):
     usuario =  UsuarioRepo.obterUm(usuario.id)  
-    postagens = PostagemRepo.obterPorAutor(usuario.id)
-    postagens = PostagemRepo.obterPagina(pn, ps)
     totalPaginas = PostagemRepo.obterTotalPaginas(ps)
-    return templates.TemplateResponse("postagem/minhasPostagens.html", {"request": request, "postagens": postagens, "totalPaginas": totalPaginas, "tamanhoPagina": ps, "paginaAtual": pn, "usuario": usuario})
-  
+    if usuario and not usuario.admin:
+        postagem = PostagemRepo.obterPorAutor(usuario.id)
+        postagem = PostagemRepo.obterPagina(pn, ps)
+        postagemGeral = []
+    else:
+        postagem = PostagemRepo.obterPorAutor(usuario.id)
+        postagem = PostagemRepo.obterPagina(pn, ps)
+        postagemGeral = PostagemRepo.obterTodos()
+        postagemGeral = PostagemRepo.obterPagina(pn, ps)
+
+    return templates.TemplateResponse("postagem/minhasPostagens.html", {"request": request, "postagem": postagem, "postagemGeral": postagemGeral, "totalPaginas": totalPaginas, "tamanhoPagina": ps, "paginaAtual": pn, "usuario": usuario})
+
+
 @router.get("/feed", response_class=HTMLResponse)
 async def getFeed(request: Request,
                            usuario: Usuario = Depends(validar_usuario_logado)):
@@ -60,14 +69,30 @@ async def postFeed(
     arquivoImagem: UploadFile = File(...)
 ):
     erros = {}
+
     # validação da imagem
     conteudo_arquivo = await arquivoImagem.read()
     imagem = Image.open(BytesIO(conteudo_arquivo))
+
     if not imagem:
       add_error("arquivoImagem", "Nenhuma imagem foi enviada.", erros)
 
     if data_hora is None:
         data_hora = datetime.now()
+
+    if len(erros) > 0:
+            valores = {}
+            valores["arquivoImagem"] = arquivoImagem  
+            return templates.TemplateResponse(
+            "cadastro/cadastro.html",
+            {
+                "request": request,
+                "usuario": usuario,
+                "erros": erros,
+                "valores": valores,
+            },
+            )
+        
   
     postagem = PostagemRepo.inserir(Postagem(id=0, conteudo=conteudo, usuario=usuario.id, curtida=curtida, deslike=deslike, data_hora=data_hora))
 
@@ -109,3 +134,9 @@ async def postExcluirPostagem(
                 raise Exception("Não foi possível excluir a postagem.")
     else:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
+    
+@router.get("/comentarioPostagem", response_class=HTMLResponse)
+async def getComentarioPostagem(request: Request, usuario: Usuario = Depends(validar_usuario_logado)):
+    usuario = UsuarioRepo.obterUm(usuario.id)     
+    postagens = PostagemRepo.obterTodos()
+    return templates.TemplateResponse("postagem/comentarioPostagem.html", {"request": request, "usuario": usuario, "postagens": postagens})

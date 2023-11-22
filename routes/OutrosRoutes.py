@@ -51,10 +51,7 @@ async def getComentario(request: Request, usuario: Usuario = Depends(validar_usu
     usuario = UsuarioRepo.obterUm(usuario.id)     
     return templates.TemplateResponse("outros/comentario.html", {"request": request,     "usuario": usuario})
 
-@router.get("/comentarioPostagem", response_class=HTMLResponse)
-async def getComentarioPostagem(request: Request, usuario: Usuario = Depends(validar_usuario_logado)):
-    usuario = UsuarioRepo.obterUm(usuario.id)     
-    return templates.TemplateResponse("outros/comentarioPostagem.html", {"request": request,     "usuario": usuario})
+
 
 @router.get("/editarPostagem", response_class=HTMLResponse)
 async def getEditarPostagem(request: Request, usuario: Usuario = Depends(validar_usuario_logado)):
@@ -70,6 +67,11 @@ async def getReceita(request: Request, usuario: Usuario = Depends(validar_usuari
 async def getRecuperacao(request: Request, usuario: Usuario = Depends(validar_usuario_logado)):
     usuario = UsuarioRepo.obterUm(usuario.id)     
     return templates.TemplateResponse("outros/recuperacao.html", {"request": request,     "usuario": usuario})
+
+@router.get("/recuperacao2", response_class=HTMLResponse)
+async def getRecuperacao(request: Request, usuario: Usuario = Depends(validar_usuario_logado)):
+    usuario = UsuarioRepo.obterUm(usuario.id)     
+    return templates.TemplateResponse("outros/recuperacao2.html", {"request": request,     "usuario": usuario})
 
 @router.get("/resultadoFiltragem", response_class=HTMLResponse)
 async def getResultadoFiltragem(request: Request, usuario: Usuario = Depends(validar_usuario_logado)):

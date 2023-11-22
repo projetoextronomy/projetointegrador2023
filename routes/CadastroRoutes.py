@@ -161,7 +161,7 @@ async def postUsuario(request: Request,
     valores["nome"] = nome
     valores["email"] = email.lower()
     valores["endereco"] = endereco
-    valores["dataNascimento"] = str(dataNascimento)    
+    valores["dataNascimento"] = str(dataNascimento)  
     return templates.TemplateResponse(
       "cadastro/cadastro.html",
       {
@@ -308,3 +308,73 @@ async def postExcluir(
       raise HTTPException(status_code=status.HTTP_403_FORBIDDEN)
   else:
     raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
+
+
+
+@router.post("/configuracoes", response_class=HTMLResponse)
+async def postAlterarDados(
+    request: Request,
+    usuario: Usuario = Depends(validar_usuario_logado),
+    nomeAtual: str = Form(),
+    emailAtual: str = Form(),
+    enderecoAtual: str = Form(),
+    dataNascimentoAtual: str = Form(),
+    sexoAtual: str = Form(),
+    semglutenAtual: Optional[bool] = Form(),
+    vegetarianoAtual: Optional[bool]  = Form(),
+    lowcarbAtual: Optional[bool]  = Form(),
+    semfrutosdomarAtual: Optional[bool]  = Form(),
+    semlactoseAtual: Optional[bool]  = Form(),
+    veganoAtual: Optional[bool]  = Form(),
+    integralAtual: Optional[bool]  = Form(),
+    semleiteAtual: Optional[bool] = Form(),
+    semacucarAtual: Optional[bool]  = Form(),
+    semovoAtual: Optional[bool]  = Form(),
+    semcacauAtual: Optional[bool] = Form(),
+    organicoAtual: Optional[bool] = Form()
+):
+  nomeAtual = capitalizar_nome_proprio(nomeAtual).strip()
+  emailAtual = emailAtual.lower().strip()
+
+  # verificação de erros
+  erros = {}
+  # validação do campo nome
+  is_not_empty(nomeAtual, "nome", erros)
+  is_person_fullname(nomeAtual, "nome", erros)
+  # validação do campo email
+  is_not_empty(emailAtual, "email", erros)  
+
+
+  if usuario:
+
+    usuario_atualizado = Usuario(
+        id=usuario.id,
+        nome=nomeAtual,
+        email=emailAtual,
+        endereco=enderecoAtual,
+        dataNascimento=dataNascimentoAtual,
+        sexo=sexoAtual,
+        semgluten=semglutenAtual,
+        vegetariano=vegetarianoAtual,
+        lowcarb=lowcarbAtual,
+        semfrutosdomar=semfrutosdomarAtual,
+        semlactose=semlactoseAtual,
+        vegano=veganoAtual,
+        integral=integralAtual,
+        semleite=semleiteAtual,
+        semacucar=semacucarAtual,
+        semovo=semovoAtual,
+        semcacau=semcacauAtual,
+        organico=organicoAtual
+    )
+    # Chame o método alterar com o objeto Usuario
+    UsuarioRepo.alterar(usuario_atualizado)
+
+# mostra página de sucesso
+    return templates.TemplateResponse(
+        "cadastro/modificacaoRealizada.html",
+        {
+            "request": request,
+            "usuario": usuario
+        },
+    )
