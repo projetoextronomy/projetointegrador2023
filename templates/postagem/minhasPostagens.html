@@ -73,81 +73,80 @@
 
       </fieldset>
  
+      <div class="container">
+        {% if usuario.admin %}
+        <fieldset class="max-w-100 border p-5 m-5 mt-0 rounded">
 
-      {% if usuario.admin %}
-      <fieldset class="max-w-100 border p-5 m-5 mt-0 rounded">
+          <legend class="float-none w-auto p-2">
+            <h1 class="text-primary">Todas as Postagens</h1>
+          </legend>
 
-        <legend class="float-none w-auto p-2">
-          <h1 class="text-primary">Todas as Postagens</h1>
-        </legend>
-
-        
-          <div class="row row-cols-1 row-cols-md-3 g-4">
-            {% if postagemGeral|length > 0 %}
-            {% for p in postagemGeral %}
-            <!-- Card 1 -->
-            <div class="col-12">
-              <div class="card" >
-                <img src="/static/imagens/postagens/{{ p.id|id_img }}.jpg" alt="Imagem da Postagem">
-                <div class="card-body">
-                  <div class="d-flex justify-content-between">
-                    <h5 class="card-title">{{ p.conteudo }}</h5>
-                    <div>
-                      <a href="/editarPostagem"><img src="static/imagens/editar.svg" style="height: 2rem;" alt="Editar"></a>
-                      <a href="/excluir_postagem/{{ p.id }}" class="btn btn-dark btn-sm rounded-5" title="Excluir" data-bs-toggle="tooltip" data-bs-placement="left">
-                        <i class="bi bi-trash"></i></a>
+          
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+              {% if postagemGeral|length > 0 %}
+              {% for p in postagemGeral %}
+              <!-- Card 1 -->
+              <div class="col-12">
+                <div class="card" >
+                  <img src="/static/imagens/postagens/{{ p.id|id_img }}.jpg" alt="Imagem da Postagem">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                      <h5 class="card-title">{{ p.conteudo }}</h5>
+                      <div>
+                        <a href="/editarPostagem"><img src="static/imagens/editar.svg" style="height: 2rem;" alt="Editar"></a>
+                        <a href="/excluir_postagem/{{ p.id }}" class="btn btn-dark btn-sm rounded-5" title="Excluir" data-bs-toggle="tooltip" data-bs-placement="left">
+                          <i class="bi bi-trash"></i></a>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            {% endfor %}
-            {% else %}
-            <h3>Não há postagens.</h3>
-            {% endif %}
-          </div>
-        </div>
-
-        <nav class="mt-4">
-          <ul class="pagination ms-2">
-            <li class="page-item {{ 'disabled' if paginaAtual == 1 else '' }}">
-              <a class="page-link" href="/minhasPostagens?pn=1&ps={{ tamanhoPagina }}">
-                <i class="bi bi-arrow-left"></i>
-              </a>
-            </li>
-    
-            <li class="page-item {{ 'disabled' if paginaAtual == 1 else '' }}">
-              <a class="page-link" href="/minhasPostagens?pn={{ paginaAtual - 1 }}&ps={{ tamanhoPagina }}">
-                <i class="bi bi-arrow-left-short"></i>
-              </a>
-            </li>
-    
-            {% for i in range(totalPaginas) %}
-              <li class="page-item {{ 'active' if i + 1 == paginaAtual else '' }}">
-                <a class="page-link" href="/minhasPostagens?pn={{ i + 1 }}&ps={{ tamanhoPagina }}">{{ i + 1 }} 
-                </a> 
-              </li>
               {% endfor %}
-    
-              <li class="page-item {{ 'disabled' if paginaAtual == totalPaginas else '' }}">
-                <a class="page-link" href="/minhasPostagens?pn={{ paginaAtual + 1 }}&ps={{ tamanhoPagina }}">
-                  <i class="bi bi-arrow-right-short"></i>
+              {% else %}
+              <h3>Não há postagens.</h3>
+              {% endif %}
+            </div>
+          </div>
+
+          <nav class="mt-4">
+            <ul class="pagination ms-2">
+              <li class="page-item {{ 'disabled' if paginaAtual == 1 else '' }}">
+                <a class="page-link" href="/minhasPostagens?pn=1&ps={{ tamanhoPagina }}">
+                  <i class="bi bi-arrow-left"></i>
                 </a>
               </li>
-    
-              <li class="page-item {{ 'disabled' if paginaAtual == totalPaginas else '' }}">
-                <a class="page-link" href="/minhasPostagens?pn={{ totalPaginas }}&ps={{ totalPaginas }}">
-                  <i class="bi bi-arrow-right"></i>
-                </a>
-              </li>
-          </ul>
-        </nav>
-
-      </fieldset>
-      {% endif %}
-
-
       
+              <li class="page-item {{ 'disabled' if paginaAtual == 1 else '' }}">
+                <a class="page-link" href="/minhasPostagens?pn={{ paginaAtual - 1 }}&ps={{ tamanhoPagina }}">
+                  <i class="bi bi-arrow-left-short"></i>
+                </a>
+              </li>
+      
+              {% for i in range(totalPaginas) %}
+                <li class="page-item {{ 'active' if i + 1 == paginaAtual else '' }}">
+                  <a class="page-link" href="/minhasPostagens?pn={{ i + 1 }}&ps={{ tamanhoPagina }}">{{ i + 1 }} 
+                  </a> 
+                </li>
+                {% endfor %}
+      
+                <li class="page-item {{ 'disabled' if paginaAtual == totalPaginas else '' }}">
+                  <a class="page-link" href="/minhasPostagens?pn={{ paginaAtual + 1 }}&ps={{ tamanhoPagina }}">
+                    <i class="bi bi-arrow-right-short"></i>
+                  </a>
+                </li>
+      
+                <li class="page-item {{ 'disabled' if paginaAtual == totalPaginas else '' }}">
+                  <a class="page-link" href="/minhasPostagens?pn={{ totalPaginas }}&ps={{ totalPaginas }}">
+                    <i class="bi bi-arrow-right"></i>
+                  </a>
+                </li>
+            </ul>
+          </nav>
+
+        </fieldset>
+        {% endif %}
+      </div>
+    
     </div>
   </div>
 </div>
