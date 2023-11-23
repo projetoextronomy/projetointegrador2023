@@ -1,17 +1,21 @@
-{% extends "base.html" %}
+{% extends "base_simples.html" %}
 
 {% block conteudo %}
 
 <div class="container">
-  <img src="/static/imagens/usuariopro/userpro.png">
-  <h1>Ação realizada!</h1>
-  <hr>
-  <p class="lead">
-      A ação foi concluída com sucesso. Para verificar, saia e efetue o login novamente.
-  </p>
-
-    <a href="/login" class="btn btn btn-primary text-white text-center w-25 fs-5 border border-1 text-start">Login</a>
-
+    
+      <img src="/static/imagens/userPro.png" class="rounded w-75">
+      <div class="text-primary fs-6 text-center align-items-center"><br>
+        <a href="/novoPagamento" class="btn btn btn-primary text-white text-center fs-5 w-75 h-50 border border-1 text-start" >Quero me tornar um usuário PRO</a>
+      </div>
+    </div>
+      <h1>Ação realizada!</h1>
+      <hr>
+      <p class="lead">
+        A ação foi concluída com sucesso. Para verificar, saia e efetue o login novamente.
+      </p>
+      <a href="/login" class="btn btn btn-primary text-white text-center w-25 fs-5 border border-1 text-start">Login</a>
 </div>
+
 
 {% endblock %}
