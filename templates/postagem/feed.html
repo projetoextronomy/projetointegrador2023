@@ -167,10 +167,10 @@
         <div class="card mb-3 border-info border-2 w-80">
           <div class="card-header bg-white d-flex align-items-center">
             <!-- <img src="static/imagens/perfil.svg" alt="Foto de Perfil" class="rounded-circle me-2" style="width: 3rem;"> -->  
-            {% if not usuario.admin and p.usuario!=usuario.admin %}
-            <img src="/static/imagens/usuarios/{{ p.usuario|id_img }}.jpg" class="d-flex align-self-center me-3" width="60" alt="Imagem do usuário {{ usuario.nome }}" style="border-radius: 50%;">
-            {% else %}
-            <img src="/static/imagens/perfil_verde.svg" class="d-flex align-self-center me-3" width="60" alt="Imagem do usuário {{ usuario.nome }}" style="border-radius: 50%;">
+            {% if not usuario.admin and p.usuario!=usuario.admin: %}
+            <img src="/static/imagens/usuarios/{{ p.usuario|id_img }}.jpg" class="d-flex align-self-center me-3" width="60" alt="Imagem do usuário {{ p.nome_autor }}" style="border-radius: 50%;">
+            {% else: %}
+            <img src="/static/imagens/perfil_verde.svg" class="d-flex align-self-center me-3" width="60" alt="Imagem do usuário {{ p.nome_autor }}" style="border-radius: 50%;">
             {% endif %}
             <span class="flex-grow-1 fs-5">{{ p.nome_autor }}</span>
             <button class="btn btn-primary btn-sm text-white">Seguir</button>
