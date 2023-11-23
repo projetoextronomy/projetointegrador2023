@@ -228,7 +228,7 @@ async def postAlterarSenha(
   if len(erros) > 0:
     valores = {}
     return templates.TemplateResponse(
-      "cadastro/login.html",
+      "main/login.html",
       {
         "request": request,
         "usuario": usuario,
